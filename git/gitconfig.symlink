@@ -1,0 +1,15 @@
+[user]
+  name = David Stamm
+  email = david@paperlesspost.com
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+[core]
+  quotepath = false
+  excludesfile = ~/.gitignore
+[push]
+  default = current
