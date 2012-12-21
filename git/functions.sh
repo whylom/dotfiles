@@ -1,6 +1,14 @@
+function git_current_branch() {
+  ref=$(git symbolic-ref HEAD 2>/dev/null)
+  echo ${ref#refs/heads/}
+}
+
 function git_prompt() {
-  ref=$(git symbolic-ref HEAD 2>/dev/null) || return
-  echo " [${ref#refs/heads/}]"
+  if [ -z $(git_current_branch) ]; then
+    echo ""
+  else
+    echo " [$(git_current_branch)]"
+  fi
 }
 
 function gs_nth() {
@@ -30,6 +38,14 @@ function gd() {
     gs_nth $1 | xargs git diff
   else
     git diff $1
+  fi
+}
+
+function gpu() {
+  if [ -z $1 ]; then
+    git push -u origin $(git_current_branch)
+  else
+    git push -u origin $1
   fi
 }
 
