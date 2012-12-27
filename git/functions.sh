@@ -18,13 +18,15 @@ function gs_nth() {
 
 # ga [M=modified] [D=deleted] [?=new] [1=1st file]
 function ga() {
-  if [[ $1 =~ ^[0-9]+$ ]] ; then
-    gs_nth $1 | xargs git add
-  elif [[ $1 =~ ^[MD?]$ ]] ; then
-    git status -sb | strp | grep "^$1" | nthword 2 | inline | xargs git add
-  else
-    git add $1
-  fi
+  for arg in $@; do
+    if [[ $arg =~ ^[0-9]+$ ]] ; then
+      gs_nth $arg | xargs git add
+    elif [[ $arg =~ ^[MD?]$ ]] ; then
+      git status -sb | strp | grep "^$arg" | nthword 2 | inline | xargs git add
+    else
+      git add $arg
+    fi
+  done
 }
 
 # gcp 2 -> copies to clipboard the 2nd filename listed by git status
