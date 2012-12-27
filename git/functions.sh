@@ -60,7 +60,3 @@ function grr!() {
     echo "removed $remote"
   done
 }
-
-function gshipped() {
-  git log --pretty=format:'%h %C(cyan)%cd %C(yellow)%an%C(reset) %s' --date=short --since=1.week | grep "Merge remote-tracking branch 'whylom/" | sed "s/Merge remote-tracking branch/merged/" | sed "s/'//g"
-}
