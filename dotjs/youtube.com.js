@@ -11,3 +11,8 @@ $('#masthead-nav').remove();
 $('#masthead-user-bar-container').remove();
 $('#watch-headline h1').css('font-size', '13pt');
 $('#watch7-content').css('width', '854px');
+
+// Get video's running time from markup, and insert into document title.
+var runningTime = $('meta[itemprop="duration"]').attr('content');
+runningTime = '(' + runningTime.replace('PT', '').replace('M', ':').replace('S', '') + ')';
+document.title = document.title.replace('- YouTube', runningTime);
