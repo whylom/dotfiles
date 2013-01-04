@@ -12,6 +12,9 @@ function git_prompt() {
   fi
 }
 
+function git_log_nth() {
+  git log --pretty=format:'%H' | nthline $1
+}
 function git_status_nth() {
   n=$(($1 + 1)) # ignore the 1st line of git status output (the current branch)
   git status -sb | strp | nthline $n | nthword 2 | chomp
@@ -36,12 +39,12 @@ function ga() {
   done
 }
 
-# gcp 2 -> copies to clipboard the 2nd filename listed by git status
+# copies to clipboard the nth filename listed by git status
 function gcp() {
   git_status_nth $1 | pbcopy
 }
 
-# gd 2 -> shows diff for 2nd file listed by git status
+# shows diff for nth file listed by git status
 function gd() {
   if [[ $1 =~ ^[0-9]+$ ]]; then
     git_status_nth $1 | xargs git diff
@@ -65,6 +68,20 @@ function grr!() {
     git remote rm $remote
     echo "removed $remote"
   done
+}
+
+# copies to clipboard the SHA of the nth commit listed by git log
+function gsha() {
+  git_log_nth $1 | chomp | pbcopy
+}
+
+# copies to clipboard the SHA of the nth commit listed by git log
+function gshow() {
+  if [ -z $1 ]; then
+    git show
+  else
+    git_log_nth $1 | chomp | xargs git show
+  fi
 }
 
 function gunstage() {
