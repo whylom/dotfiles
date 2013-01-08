@@ -53,6 +53,14 @@ function gd() {
   fi
 }
 
+function gp() {
+  if [ -z $1 ]; then
+    git push origin $(git_branch)
+  else
+    git push origin $1
+  fi
+}
+
 function gpu() {
   if [ -z $1 ]; then
     git push -u origin $(git_branch)
