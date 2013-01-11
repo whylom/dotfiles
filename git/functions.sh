@@ -53,19 +53,37 @@ function gd() {
   fi
 }
 
+function run() {
+  echo $1 # warn user
+  sleep 1 # give user a second to Ctrl-C
+  eval $1 # FIRE!
+}
+
+function gmr() {
+  run "git merge root/$1"
+}
+
 function gp() {
   if [ -z $1 ]; then
-    git push origin $(git_branch)
+    run "git push origin $(git_branch)"
   else
-    git push origin $1
+    run "git push origin $1"
+  fi
+}
+
+function gpr() {
+  if [ -z $1 ]; then
+    run "git push root $(git_branch)"
+  else
+    run "git push root $1"
   fi
 }
 
 function gpu() {
   if [ -z $1 ]; then
-    git push -u origin $(git_branch)
+    run "git push -u origin $(git_branch)"
   else
-    git push -u origin $1
+    run "git push -u origin $1"
   fi
 }
 
@@ -85,10 +103,10 @@ function gsha() {
 
 # copies to clipboard the SHA of the nth commit listed by git log
 function gshow() {
-  if [ -z $1 ]; then
-    git show
-  else
+  if [[ $1 =~ ^[0-9]+$ ]]; then
     git_log_nth $1 | chomp | xargs git show
+  else
+    git show $1
   fi
 }
 
@@ -99,4 +117,3 @@ function gunstage() {
     git reset HEAD
   fi
 }
-

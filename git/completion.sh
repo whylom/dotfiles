@@ -11,5 +11,7 @@ complete -o default -o nospace -F __branches gco
 complete -o default -o nospace -F __branches gcob
 complete -o default -o nospace -F __branches gd
 complete -o default -o nospace -F __branches gm
+complete -o default -o nospace -F __branches gmr
 complete -o default -o nospace -F __branches gp
+complete -o default -o nospace -F __branches gpr
 complete -o default -o nospace -F __branches gpu
