@@ -5,6 +5,8 @@ export PATH=/usr/local/bin:$PATH
 # aliases
 alias cd..="cd .."
 alias reload="source ~/.bashrc"
+alias ls="ls -AGh"
+alias ll="ls -AGhl"
 
 # load .sh files
 for f in ~/.dotfiles/**/*.sh; do source $f; done
