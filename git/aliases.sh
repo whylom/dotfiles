@@ -13,8 +13,6 @@ alias gld="git log --pretty=format:'%h %C(cyan)%cd %C(yellow)%an%C(reset) %s%C(g
 alias gm="git merge"
 alias gmm="git merge root/master"
 alias gmm!="git checkout master && git merge root/master && git push origin master"
-alias gpeek="gl -5"
-alias gpeekd="gld -5"
 alias gr="git remote -v"
 alias gs="git status -sb"
 alias gundo="git reset HEAD^ --soft"
