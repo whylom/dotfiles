@@ -56,6 +56,10 @@ function gd() {
   fi
 }
 
+function gf() {
+  run "git fetch ${1:-root}"
+}
+
 function gmr() {
   run "git merge root/${1:-$(git_branch)}"
 }
