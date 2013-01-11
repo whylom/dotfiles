@@ -16,11 +16,14 @@ function git_log_nth() {
   git log --pretty=format:'%H' | nthline $1
 }
 function git_status_nth() {
-  n=$(($1 + 1)) # ignore the 1st line of git status output (the current branch)
-  git status -sb | strp | nthline $n | nthword 2 | chomp
+  git status -sb | strp | nthline $(($1 + 1)) | nthword 2 | chomp
 }
 
-
+function run() {
+  echo "-> $1" # warn user what we're about to do
+  sleep 1.5    # give them some time to Ctrl-C
+  eval $1      # FIRE!
+}
 
 # takes multiple arguments, any of which can be
 #   1-9 : nth file in git status listing
@@ -53,38 +56,20 @@ function gd() {
   fi
 }
 
-function run() {
-  echo $1 # warn user
-  sleep 1 # give user a second to Ctrl-C
-  eval $1 # FIRE!
-}
-
 function gmr() {
-  run "git merge root/$1"
+  run "git merge root/${1:-$(git_branch)}"
 }
 
 function gp() {
-  if [ -z $1 ]; then
-    run "git push origin $(git_branch)"
-  else
-    run "git push origin $1"
-  fi
+  run "git push origin ${1:-$(git_branch)}"
 }
 
 function gpr() {
-  if [ -z $1 ]; then
-    run "git push root $(git_branch)"
-  else
-    run "git push root $1"
-  fi
+  run "git push root ${1:-$(git_branch)}"
 }
 
 function gpu() {
-  if [ -z $1 ]; then
-    run "git push -u origin $(git_branch)"
-  else
-    run "git push -u origin $1"
-  fi
+  run "git push -u origin ${1:-$(git_branch)}"
 }
 
 # git remove remotes! (except origin and root)
