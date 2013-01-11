@@ -1,3 +1,6 @@
+// Customize page title for issues to start with issue number
+document.title = document.title.replace(/(.*) · Issue #([0-9]+).*$/, '#$2 - $1');
+
 var box = $('.notification-indicator');
 var dot = box.find('.mail-status');
 
