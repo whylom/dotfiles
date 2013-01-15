@@ -20,9 +20,9 @@ function git_status_nth() {
 }
 
 function run() {
-  echo "-> $1" # warn user what we're about to do
-  sleep 1.5    # give them some time to Ctrl-C
-  eval $1      # FIRE!
+  echo -e "\033[36m$1\033[0m" # warn user what we're about to do
+  sleep 1.5            # give them some time to Ctrl-C
+  eval $1              # FIRE!
 }
 
 # takes multiple arguments, any of which can be
