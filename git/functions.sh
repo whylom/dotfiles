@@ -42,6 +42,14 @@ function ga() {
   done
 }
 
+function gco() {
+  if [[ $1 =~ ^[0-9]+$ ]]; then
+    git_status_nth $1 | xargs git checkout
+  else
+    git checkout "$@"
+  fi
+}
+
 # copies to clipboard the nth filename listed by git status
 function gcp() {
   git_status_nth $1 | pbcopy
