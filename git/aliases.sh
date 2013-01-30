@@ -16,4 +16,3 @@ alias gmm!="git checkout master && git merge root/master && git push origin mast
 alias gr="git remote -v"
 alias gs="git status -sb"
 alias gundo="git reset HEAD^ --soft"
-alias gshipped="git log --pretty=format:'%h %C(cyan)%cd %C(reset)%s' --date=short --since=1.week | grep \"Merge remote-tracking branch\" | sed \"s/Merge remote-tracking branch //\" | sed \"s/'//g\""
