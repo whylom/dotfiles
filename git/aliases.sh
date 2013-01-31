@@ -11,7 +11,7 @@ alias gl="git log --pretty=format:'%h %C(yellow)%an%C(reset) %s%C(green)%d%C(res
 alias gld="git log --pretty=format:'%h %C(cyan)%cd %C(yellow)%an%C(reset) %s%C(green)%d%C(reset)' --date=short"
 alias gph="git push heroku master"
 alias gm="git merge"
-alias gmm="git merge root/master"
+alias gmm="run 'git merge root/master'"
 alias gmm!="git checkout master && git merge root/master && git push origin master"
 alias gr="git remote -v"
 alias gs="git status -sb"
