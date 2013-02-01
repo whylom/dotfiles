@@ -3,13 +3,13 @@
   email = david@paperlesspost.com
 [color]
   diff = auto
-  status = auto
+  status = always
   branch = auto
   interactive = auto
-  ui = true
+  ui = always
   pager = true
 [core]
   quotepath = false
   excludesfile = ~/.gitignore
 [push]
-  default = current
+  default = tracking
