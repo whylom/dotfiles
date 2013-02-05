@@ -66,7 +66,7 @@ function gd() {
 }
 
 function gf() {
-  run "git fetch ${1:-root}"
+  run "git fetch ${1:-origin}"
 }
 
 function gmr() {
