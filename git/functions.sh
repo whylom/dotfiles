@@ -102,7 +102,7 @@ function gs() {
 
   for line in $status; do
     if [[ $i > 0 ]]; then
-      line="$i $line"
+      line="$i. $line"
     fi
     echo "$line"
     let i++

@@ -11,3 +11,7 @@ function nthword() {
 function 1stword() {
   cut -d ' ' -f 1
 }
+
+function warn() {
+  echo -e "\033[36m$1\033[0m"
+}
