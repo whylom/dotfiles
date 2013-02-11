@@ -85,6 +85,20 @@ function gpu() {
   run "git push -u origin ${1:-$(git_branch)}"
 }
 
+function gprune!() {
+  echo "Getting list of remote branches..."
+  remote_branches=$(git ls-remote --heads origin | cut -f 2)
+
+  for branch in $remote_branches; do
+    branch_exists_locally=`git show-ref --verify --quiet $branch`
+
+    # if local branch doesn't exist, delete the remote branch
+    if [[ $? = 1 ]]; then
+      run "git push origin :${branch#refs/heads/}"
+    fi
+  done
+}
+
 # git remove remotes! (except origin and root)
 function grr!() {
   remotes=`git remote -v | cut -f 1 | uniq | grep -vE '(origin|root)'`
