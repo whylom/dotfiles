@@ -119,7 +119,9 @@ function gpu() {
   run "git push -u origin ${1:-$(git_branch)}"
 }
 
-function gprune!() {
+# Remove remote branches from origin that don't have a
+# corresponding local branch
+function grr!() {
   echo "Getting list of remote branches..."
   remote_branches=$(git ls-remote --heads origin | cut -f 2)
 
@@ -133,13 +135,9 @@ function gprune!() {
   done
 }
 
-# git remove remotes! (except origin and root)
-function grr!() {
-  remotes=`git remote -v | cut -f 1 | uniq | grep -vE '(origin|root)'`
-  for remote in $remotes; do
-    git remote rm $remote
-    echo "removed $remote"
-  done
+# Delete branches from remotes (except origin and root)
+function gprune!() {
+  git branch -a | grep remotes | grep -vE '(origin|root)' | strp | inline | xargs git branch -D
 }
 
 function gs() {
