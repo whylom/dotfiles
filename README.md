@@ -14,5 +14,5 @@ A home for my humble dotfiles. This is not a fork, but it does happily steal ide
 * Any *.symlink files are symlinked into ~ during installation.
 * Any *.sh files are included by .bashrc.
 * Put anything you want to keep out of version control into `private.sh`. This file has already been `.gitignore`'d for you.
-* Most of the customization firepower is in `git/functions.sh`
-
+* The `dotjs` folder is symlinked to `~/.js`. These files customize web pages using Chris Wanstrath's kickass [dotjs](https://github.com/defunkt/dotjs) Chrome extension.
+* Most of the customization firepower is in `git/functions.sh`. 
