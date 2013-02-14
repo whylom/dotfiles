@@ -1,3 +1,10 @@
+# generally useful aliases
+alias cd..="cd .."
+alias reload="source ~/.bashrc"
+alias ls="ls -AGh"
+alias ll="ls -AGhl"
+
+
 # useful shortcuts for Bash 1-liners
 
 # encapitalify all teh words
