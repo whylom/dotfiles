@@ -140,6 +140,44 @@ function gprune!() {
   git branch -a | grep remotes | grep -vE '(origin|root)' | strp | inline | xargs git branch -D
 }
 
+# Tricked-out "git branch" that color codes root branches and indicates
+# tracking branches based on forks.
+function gb+() {
+  OIFS="${IFS}"
+  IFS=$'\n'
+  status=`git branch -vv | tr -d '*' | tr -s ' ' | strp`
+  current_branch="$(git_branch)"
+
+  for line in $status; do
+    # extract branch name
+    branch=$(echo $line | 1stword)
+
+    # extract remote ("origin", "root", "defunkt", etc.)
+    remote=${line#*[}
+    remote=${remote%]*}
+    remote=${remote%/*}
+
+    if [[ $branch = $current_branch ]]; then
+      # display current branch the usual way (in green with an asterisk)
+      output="* \033[32m$branch\033[0m"
+    elif [[ $remote = 'root' ]]; then
+      # display root branches in purple
+      output="  \033[35m$branch\033[0m"
+    else
+      output="  $branch"
+    fi
+
+    # append name of remote if neither "origin" nor "root" (ie: a fork)
+    if [[ $remote != 'origin' && $remote != 'root' ]]; then
+      output="$output [\033[36m$remote\033[0m]"
+    fi
+
+    echo -e $output
+  done
+
+  IFS="${OIFS}"
+}
+
 function gs() {
   OIFS="${IFS}"
   IFS=$'\n'
