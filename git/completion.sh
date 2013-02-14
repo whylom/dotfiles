@@ -24,4 +24,5 @@ complete -o default -o nospace -F __branches gp
 complete -o default -o nospace -F __branches gpr
 complete -o default -o nospace -F __branches gpu
 
+complete -o default -o nospace -F __remotes gcot
 complete -o default -o nospace -F __remotes gf
