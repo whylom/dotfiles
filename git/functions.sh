@@ -43,6 +43,40 @@ function ga() {
   done
 }
 
+function gcm() {
+  message="$*"
+  maxlength=50
+  length=${#message}
+
+  if [[ $length = 0 ]]; then
+    read -p "How about a commit message: " message
+    gcm $message
+  elif [[ $length > $maxlength ]]; then
+    echo "Your commit message is `expr $length - $maxlength` characters too long."
+    read -p "Try a shorter message: " message
+    gcm $message
+  else
+    git commit -m "$message"
+  fi
+}
+
+function gcam() {
+  message="$*"
+  maxlength=50
+  length=${#message}
+
+  if [[ $length = 0 ]]; then
+    read -p "How about a commit message: " message
+    gcam $message
+  elif [[ $length > $maxlength ]]; then
+    echo "Your commit message is `expr $length - $maxlength` characters too long."
+    read -p "Try a shorter message: " message
+    gcam $message
+  else
+    git commit -a -m "$message"
+  fi
+}
+
 function gco() {
   if [[ $1 =~ ^[0-9]+$ ]]; then
     git_status_nth $1 | xargs git checkout
