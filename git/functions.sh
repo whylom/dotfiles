@@ -85,6 +85,11 @@ function gco() {
   fi
 }
 
+function gcot() {
+  # treats remote:branch like remote/branch
+  git checkout -t ${1/://}
+}
+
 # copies to clipboard the nth filename listed by git status
 function gcp() {
   git_status_nth $1 | pbcopy
@@ -100,7 +105,7 @@ function gd() {
 }
 
 function gf() {
-  run "git fetch ${1:-origin}"
+  run "git fetch ${1:-root}"
 }
 
 function gmr() {
