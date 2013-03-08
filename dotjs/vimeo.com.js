@@ -1,3 +1,6 @@
+// Make the name of the video smaller, because JESUS
+$('h1').css('font-size', '22px');
+
 // Get video's duration from meta tag data.
 var duration = $('meta[itemprop="duration"]').attr('content');
 var parts = duration.replace(/(PT|S)/g, '').split(/(H|M)/);

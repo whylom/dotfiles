@@ -36,45 +36,11 @@ function ga() {
     if [[ $arg =~ ^[0-9]+$ ]]; then
       git_status_nth $arg | xargs git add
     elif [[ $arg =~ ^[MD?]$ ]]; then
-      git status -sb | strp | grep "^$arg" | nthword 2 | inline | xargs git add
+      git status --porcelain | strp | grep "^$arg" | nthword 2 | inline | xargs git add
     else
       git add $arg
     fi
   done
-}
-
-function gcm() {
-  message="$*"
-  maxlength=50
-  length=${#message}
-
-  if [[ $length = 0 ]]; then
-    read -p "How about a commit message: " message
-    gcm $message
-  elif [[ $length > $maxlength ]]; then
-    echo "Your commit message is `expr $length - $maxlength` characters too long."
-    read -p "Try a shorter message: " message
-    gcm $message
-  else
-    git commit -m "$message"
-  fi
-}
-
-function gcam() {
-  message="$*"
-  maxlength=50
-  length=${#message}
-
-  if [[ $length = 0 ]]; then
-    read -p "How about a commit message: " message
-    gcam $message
-  elif [[ $length > $maxlength ]]; then
-    echo "Your commit message is `expr $length - $maxlength` characters too long."
-    read -p "Try a shorter message: " message
-    gcam $message
-  else
-    git commit -a -m "$message"
-  fi
 }
 
 function gco() {
@@ -124,63 +90,12 @@ function gpu() {
   run "git push -u origin ${1:-$(git_branch)}"
 }
 
-# Remove remote branches from origin that don't have a
-# corresponding local branch
-function grr!() {
-  echo "Getting list of remote branches..."
-  remote_branches=$(git ls-remote --heads origin | cut -f 2)
-
-  for branch in $remote_branches; do
-    branch_exists_locally=`git show-ref --verify --quiet $branch`
-
-    # if local branch doesn't exist, delete the remote branch
-    if [[ $? = 1 ]]; then
-      run "git push origin :${branch#refs/heads/}"
-    fi
-  done
-}
-
-# Delete branches from remotes (except origin and root)
-function gprune!() {
-  git branch -a | grep remotes | grep -vE '(origin|root)' | strp | inline | xargs git branch -D
-}
-
-# Tricked-out "git branch" that color codes root branches and indicates
-# tracking branches based on forks.
-function gb+() {
-  OIFS="${IFS}"
-  IFS=$'\n'
-  status=`git branch -vv | tr -d '*' | tr -s ' ' | strp`
-  current_branch="$(git_branch)"
-
-  for line in $status; do
-    # extract branch name
-    branch=$(echo $line | 1stword)
-
-    # extract remote ("origin", "root", "defunkt", etc.)
-    remote=${line#*[}
-    remote=${remote%]*}
-    remote=${remote%/*}
-
-    if [[ $branch = $current_branch ]]; then
-      # display current branch the usual way (in green with an asterisk)
-      output="* \033[32m$branch\033[0m"
-    elif [[ $remote = 'root' ]]; then
-      # display root branches in purple
-      output="  \033[35m$branch\033[0m"
-    else
-      output="  $branch"
-    fi
-
-    # append name of remote if neither "origin" nor "root" (ie: a fork)
-    if [[ $remote != 'origin' && $remote != 'root' ]]; then
-      output="$output [\033[36m$remote\033[0m]"
-    fi
-
-    echo -e $output
-  done
-
-  IFS="${OIFS}"
+function gbl() {
+  if [ -z $2 ]; then
+    git blame $1
+  else
+    git blame $1 | grep -C 5 "$2"
+  fi
 }
 
 function gs() {
@@ -234,6 +149,7 @@ function gshow() {
     git show $1
   fi
 }
+alias gsho="gshow"
 
 function gunstage() {
   if [[ $1 =~ ^[0-9]+$ ]]; then
