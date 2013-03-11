@@ -17,7 +17,7 @@ function git_log_nth() {
 }
 
 function git_status_nth() {
-  git status -sb | strp | nthline $(($1 + 1)) | nthword 2 | chomp
+  git status --porcelain | strp | nthline $1 | tr -s ' ' | nthword 2 | xargs echo
 }
 
 function run() {
@@ -34,13 +34,14 @@ function run() {
 function ga() {
   for arg in $@; do
     if [[ $arg =~ ^[0-9]+$ ]]; then
-      git_status_nth $arg | xargs git add
+      git add "$(git_status_nth $arg)"
     elif [[ $arg =~ ^[MD?]$ ]]; then
       git status --porcelain | strp | grep "^$arg" | nthword 2 | inline | xargs git add
     else
       git add $arg
     fi
   done
+  gs
 }
 
 function gco() {
@@ -58,7 +59,7 @@ function gcot() {
 
 # copies to clipboard the nth filename listed by git status
 function gcp() {
-  git_status_nth $1 | pbcopy
+  git_status_nth $1 | chomp | pbcopy
 }
 
 # shows diff for nth file listed by git status
@@ -101,14 +102,11 @@ function gbl() {
 function gs() {
   OIFS="${IFS}"
   IFS=$'\n'
-  status=`git status -sb`
-  i=0
+  status=`git status -s`
+  i=1
 
   for line in $status; do
-    if [[ $i > 0 ]]; then
-      line="$i. $line"
-    fi
-    echo "$line"
+    echo "$i. $line"
     let i++
   done
 
@@ -151,10 +149,17 @@ function gshow() {
 }
 alias gsho="gshow"
 
-function gunstage() {
-  if [[ $1 =~ ^[0-9]+$ ]]; then
-    git_status_nth $1 | xargs git reset HEAD
+function gus() {
+  if [ $# = 0 ]; then
+    git reset -q HEAD
   else
-    git reset HEAD
+    for arg in $@; do
+      if [[ $arg =~ ^[0-9]+$ ]]; then
+        git reset -q HEAD "$(git_status_nth $arg)"
+      else
+        git reset -q HEAD $arg
+      fi
+    done
   fi
+  gs
 }

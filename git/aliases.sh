@@ -1,4 +1,4 @@
-alias ga.="git add ."
+alias ga.="ga ."
 alias gb="git branch"
 alias gbd="git branch -D"
 alias gc="git commit"
