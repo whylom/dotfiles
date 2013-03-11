@@ -11,3 +11,10 @@ document.title = document.title.replace('| Video on TED.com', '(' + time + ')');
 $('#conversations, #conversation, #share_and_save').remove();
 var relatedTalks = $('.contentPod').has('.relatedPlaylists, .relatedTalks');
 $('.contentPod').not(relatedTalks).remove();
+
+// Show/hide right-rail content by clicking headers.
+$('.contentPod .header').toggle(function() {
+  $(this).siblings('.content').hide();
+}, function() {
+  $(this).siblings('.content').show();
+});
