@@ -102,12 +102,18 @@ function gbl() {
 function gs() {
   OIFS="${IFS}"
   IFS=$'\n'
-  status=`git status -s`
+  status=`git status -sb`
   i=1
 
   for line in $status; do
-    echo "$i. $line"
-    let i++
+    if [[ $line =~ ^## ]]; then
+      if [[ $line =~ (behind|ahead) ]]; then
+        echo "$line"
+      fi
+    else
+      echo "$i. $line"
+      let i++
+    fi
   done
 
   IFS="${OIFS}"
