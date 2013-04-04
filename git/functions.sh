@@ -79,6 +79,10 @@ function gmr() {
   run "git merge root/${1:-$(git_branch)}"
 }
 
+function gmo() {
+  run "git merge origin/${1:-$(git_branch)}"
+}
+
 function gp() {
   run "git push origin ${1:-$(git_branch)}"
 }
