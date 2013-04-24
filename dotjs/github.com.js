@@ -3,7 +3,7 @@ document.title = document.title.replace(/(.*) · Issue #([0-9]+).*$/, '#$2 - $1'
 
 // GitHub recently jacked up the size of code displayed in the "changes"
 // section of pull requests. Let's change it back, shall we?
-$('#files .file .data .diff-line').css('font-size', '12px');
+$('#files .file .data .diff-line-code').css('font-size', '12px');
 
 // Screen-scrape GitHub notifications page to find # of unread notifications.
 function getUnreadCount(callback) {
