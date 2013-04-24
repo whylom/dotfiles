@@ -95,6 +95,27 @@ function gpu() {
   run "git push -u origin ${1:-$(git_branch)}"
 }
 
+function g_prune_remote_branches() {
+  read -p "Are you sure? (y/n) " confirm
+
+  if [[ $confirm != 'y' ]]; then
+    return
+  fi
+
+  branches_on_origin=$(git ls-remote --heads origin | cut -f 2 | cut -f 3 -d "/")
+
+  for branch in $branches_on_origin; do
+    # check to see if a branch if that name exists locally (populates $? variable)
+    git show-ref --verify --quiet refs/heads/$branch
+
+    # if local branch does NOT exist
+    if [ $? != 0 ]; then
+      # delete the remote branch
+      run "git push origin :$branch"
+    fi
+  done
+}
+
 function gbl() {
   if [ -z $2 ]; then
     git blame $1
