@@ -16,3 +16,5 @@ A home for my humble dotfiles. This is not a fork, but it does happily steal ide
 * Put anything you want to keep out of version control into `private.sh`. This file has already been `.gitignore`'d for you.
 * The `dotjs` folder is symlinked to `~/.js`. These files customize web pages using Chris Wanstrath's kickass [dotjs](https://github.com/defunkt/dotjs) Chrome extension.
 * Most of the customization firepower is in `git/functions.sh`. 
+
+![screenshot](http://cl.ly/image/2C00460v413M/dotfiles-screenshot.png)
