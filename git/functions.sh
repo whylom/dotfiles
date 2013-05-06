@@ -50,6 +50,7 @@ function gco() {
   else
     git checkout "$@"
   fi
+  gs
 }
 
 function gcot() {
