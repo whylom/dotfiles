@@ -17,7 +17,7 @@ $('#files .file .data .diff-line-code').css('font-size', '12px');
     'fontWeight': 'bold',
     'padding': '0px 0px 0px 2px',
     'margin': '-3px 0px -3px -3px',
-    'width': '100%'
+    'width': '92%'
   }).hide().insertAfter(header);
 
   header.click(function() {
