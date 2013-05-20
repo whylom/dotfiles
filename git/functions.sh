@@ -53,6 +53,13 @@ function gco() {
   gs
 }
 
+function gcom() {
+  branch="$(git_branch)"
+  if [[ $branch != "master" ]]; then
+    git checkout master
+  fi
+}
+
 function gcot() {
   # treats remote:branch like remote/branch
   git checkout -t ${1/://}
