@@ -1,3 +1,3 @@
-function resize() {
-  osascript ~/.dotfiles/osx/resize.applescript
+function fit() {
+  osascript ~/.dotfiles/osx/fit.applescript
 }
