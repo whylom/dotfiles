@@ -1,6 +1,6 @@
 [user]
   name = David Stamm
-  email = david@paperlesspost.com
+  email = stamm@generalassemb.ly
 [color]
   diff = auto
   status = always
@@ -13,5 +13,3 @@
   excludesfile = ~/.gitignore
 [push]
   default = tracking
-[init]
-  templatedir = ~/.git_template
