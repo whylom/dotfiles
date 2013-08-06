@@ -80,23 +80,11 @@ function gd() {
 }
 
 function gf() {
-  run "git fetch ${1:-root}"
-}
-
-function gmr() {
-  run "git merge root/${1:-$(git_branch)}"
-}
-
-function gmo() {
-  run "git merge origin/${1:-$(git_branch)}"
+  run "git fetch ${1:-origin}"
 }
 
 function gp() {
   run "git push origin ${1:-$(git_branch)}"
-}
-
-function gpr() {
-  run "git push root ${1:-$(git_branch)}"
 }
 
 function gpu() {
