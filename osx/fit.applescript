@@ -1,27 +1,14 @@
--- 1440 is the width of a 15" MacBook Pro display
-set mbp_width to 1440
-
 -- Unless we trim the height of a window by 22 pixels,
 -- the width is affected. No idea why.
 set height_offset to 22
 
-tell application "Finder"
-  set dimensions to bounds of window of desktop
-  set app_width to item 3 of dimensions
-  set app_height to item 4 of dimensions
-end tell
+-- DISPLAY_WIDTH and DISPLAY_HEIGHT are set when the shell loads.
+set width to (do shell script "echo $DISPLAY_WIDTH")
+set height to (do shell script "echo $DISPLAY_HEIGHT") - height_offset
 
--- If using a dual-monitor display, the width will be the total
--- width of both monitors. Subtract the known width of the laptop
--- display to get the width of the external monitor.
-if app_width is greater than mbp_width then
-  set app_width to app_width - mbp_width
-end if
-
-set app_height to app_height - height_offset
-
+-- Resize all iTerm windows to the display's width and height.
 tell application "iTerm"
   repeat with i from (count of windows) to 1 by -1
-    set bounds of window i to {0, 0, app_width, app_height}
+    set bounds of window i to {0, 0, width, height }
   end repeat
 end tell
