@@ -32,6 +32,6 @@ function t?() {
     file=${results[$num-1]}
 
     # run the selected file
-    run "rspec $file"
+    run "spin push $file"
   fi
 }
