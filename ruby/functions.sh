@@ -23,7 +23,7 @@ function t?() {
   else
     # otherwise, display a numbered list of all results
     for (( i=0; i<${num_results}; i++ )); do
-      echo "$i. ${results[$i]}"
+      echo "$(($i+1)). ${results[$i]}"
     done
 
     # let the user select a file by number
