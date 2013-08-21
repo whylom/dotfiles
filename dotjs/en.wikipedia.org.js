@@ -92,3 +92,8 @@ $('<img src="http://upload.wikimedia.org/wikipedia/commons/8/84/W_logo_for_Mobil
 })
 .appendTo('h1');
 
+$('.mainarticle').css({
+  'padding-left': '0px',
+  'opacity': 0.75,
+  'margin-top': '-8px'
+});
