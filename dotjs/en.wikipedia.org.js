@@ -1,6 +1,6 @@
 document.title = document.title.replace('- Wikipedia, the free encyclopedia', '(Wikipedia)');
 
-$('#siteNotice, #siteSub, #mw-head-base, #mw-page-base, #mw-head, #mw-panel, #toctitle, .editsection, .mbox-image, .magnify').remove();
+$('#siteNotice, #siteSub, #mw-head-base, #mw-page-base, #mw-head, #mw-panel, #toctitle, .mw-editsection, .mbox-image, .magnify').remove();
 
 setTimeout(function() {
   $('#mw-articlefeedback').remove();
