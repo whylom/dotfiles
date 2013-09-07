@@ -63,7 +63,7 @@ $('table.ambox-content').find('b,a').css({
 });
 
 // table of contents
-var toc = $('table.toc').css({
+var toc = $('.toc').css({
   'background-color': '#f6f6f6',
   'border': 'none'
 });
