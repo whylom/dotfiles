@@ -5,6 +5,10 @@ document.title = document.title.replace(/(.*) · Issue #([0-9]+).*$/, '#$2 - $1'
 // section of pull requests. Let's change it back, shall we?
 $('#files .file .data .diff-line-code').css('font-size', '12px');
 
+// Add GitHub's own "danger" style to the Close button associated with pull
+// request comments, so I don't stupidly click on it so often.
+$('button[name=comment_and_close]').addClass('danger');
+
 
 
 // Make it easier to copy titles of issues and pull requests
