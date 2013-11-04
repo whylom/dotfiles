@@ -12,6 +12,10 @@ function git_prompt() {
   fi
 }
 
+function git_origin_branches() {
+  echo $(git branch -a | grep remotes/origin | strp | sed 's/remotes\/origin\///g')
+}
+
 function git_log_nth() {
   git log --pretty=format:'%H' | nthline $1
 }
