@@ -39,6 +39,35 @@ $('button[name=comment_and_close]').addClass('danger');
   });
 })();
 
+// Make it easier to copy branch names from pull requests
+(function() {
+  var branch = $('.current-branch .css-truncate-target:last');
+
+  var textbox = $('<input type="text" class="commit-ref">').css({
+    'border': 'none',
+    'fontSize': '10px',
+    'padding': '0px',
+    'background': 'none',
+    'position': 'relative',
+    'top': '-7px'
+  }).hide().insertAfter(branch);
+
+  branch.click(function() {
+    branch.hide();
+    textbox.val(branch.text());
+    textbox.css('width', branch.width());
+    textbox.show()
+    textbox[0].select()
+  });
+
+  $(document).click(function(e) {
+    var clicked = $(e.target)
+    if (clicked.is(branch) || clicked.is(textbox)) return;
+    textbox.hide();
+    branch.show();
+  });
+})();
+
 
 
 // Upgrade notifications indicator in page header
