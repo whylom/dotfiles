@@ -1,6 +1,6 @@
 # environment variables
 export EDITOR="subl -w"
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/heroku/bin:/usr/local/bin:$PATH
 
 # load .sh files
 for f in ~/.dotfiles/**/*.sh; do source $f; done
