@@ -124,6 +124,10 @@ function gbl() {
   fi
 }
 
+function grm() {
+  rm $(git_status_nth $1)
+}
+
 function gs() {
   OIFS="${IFS}"
   IFS=$'\n'
