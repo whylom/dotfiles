@@ -2,7 +2,7 @@ var times = 0;
 
 (function() {
   // Hide comments, siderbar, and footer.
-  $('#comments-view').remove();
+  $('#watch-discussion').remove();
   $('.comments-pagination').remove();
   $('.watch-sidebar-section').remove();
   $('#footer-container').remove();
