@@ -95,25 +95,22 @@ function gpu() {
   run "git push -u origin ${1:-$(git_branch)}"
 }
 
-function g_prune_remote_branches() {
-  read -p "Are you sure? (y/n) " confirm
+function gprune() {
+  read -p "This will delete any local branches you haven't yet pushed! Proceed? (y/n) " confirm
+  if [[ $confirm != 'y' ]]; then return; fi
 
-  if [[ $confirm != 'y' ]]; then
-    return
-  fi
+  local local_branches=$(git branch | tr -d ' ' | tr -d '*')
+  local remote_branches=$(git ls-remote --heads origin | awk '{ print $2 }'  | sed 's|refs/heads/||')
 
-  branches_on_origin=$(git ls-remote --heads origin | cut -f 2 | cut -f 3 -d "/")
-
-  for branch in $branches_on_origin; do
-    # check to see if a branch if that name exists locally (populates $? variable)
-    git show-ref --verify --quiet refs/heads/$branch
-
-    # if local branch does NOT exist
-    if [ $? != 0 ]; then
-      # delete the remote branch
-      run "git push origin :$branch"
+  # delete any local branch that does not have a corresponding remote branch
+  for branch in $local_branches; do
+    if [[ ! $remote_branches =~ $branch ]]; then
+      git branch -D $branch
     fi
   done
+
+  # remove obsolete hidden tracking branches (remotes/origin/foo)
+  git remote prune origin
 }
 
 function gbl() {
