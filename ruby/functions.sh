@@ -1,4 +1,4 @@
-function t?() {
+function spin?() {
   # concatenate arguments into a string delimited by .*
   query="$(echo $@ | sed 's/ /.*/g')"
 
