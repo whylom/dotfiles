@@ -11,4 +11,7 @@ var sec = parts[4];
 // Add running time to document title.
 var time = (hrs == '00') ? [min, sec] : [hrs, min, sec];
 time = time.join(":");
-document.title = document.title.replace('on Vimeo', '(' + time + ')');
+
+setTimeout(function() {
+  document.title = document.title + ' (' + time + ')';
+}, 1500);
