@@ -86,7 +86,7 @@ function gprune() {
   read -p "This will delete any local branches you haven't yet pushed! Proceed? (y/n) " confirm
   if [[ $confirm != 'y' ]]; then return; fi
 
-  local local_branches=$(git branch | tr -d ' ' | tr -d '*')
+  local local_branches=$(git branch | tr -d ' *')
   local remote_branches=$(git ls-remote --heads origin | awk '{ print $2 }'  | sed 's|refs/heads/||')
 
   # delete any local branch that does not have a corresponding remote branch
