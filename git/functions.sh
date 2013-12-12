@@ -12,10 +12,6 @@ function git_prompt() {
   fi
 }
 
-function git_origin_branches() {
-  echo $(git branch -a | grep remotes/origin | strp | sed 's/remotes\/origin\///g')
-}
-
 function git_log_nth() {
   git log --pretty=format:'%H' | nthline $1
 }
@@ -64,11 +60,6 @@ function gcom() {
   fi
 }
 
-function gcot() {
-  # treats remote:branch like remote/branch
-  git checkout -t ${1/://}
-}
-
 # copies to clipboard the nth filename listed by git status
 function gcp() {
   git_status_nth $1 | chomp | pbcopy
@@ -81,10 +72,6 @@ function gd() {
   else
     git diff $1
   fi
-}
-
-function gf() {
-  run "git fetch ${1:-origin}"
 }
 
 function gp() {
