@@ -110,6 +110,7 @@ function gbl() {
 
 function grm() {
   rm $(git_status_nth $1)
+  gs
 }
 
 function gs() {
@@ -137,36 +138,13 @@ function gsha() {
   git_log_nth $1 | chomp | pbcopy
 }
 
-# What did we ship in the last week? (lists feature branches merged into master)
-function gsh() {
-  # Search log for merge commits in the last week
-  log=$(git log --pretty=format:'%h %C(cyan)%cd %C(reset)%s' --date=short --merges --since=1.week | grep "Merge remote-tracking branch")
-
-  # reformat log entries for readability
-  shipped=$(echo "$log" | sed "s/Merge remote-tracking branch //g" | sed "s/'//g")
-
-  if [ -z $1 ]; then
-    # gsh -> show all branches
-    echo "$shipped"
-  elif [[  $1 =~ ^- ]]; then
-    # gsh -foo -> hide foo's branches
-    arg=$1
-    echo "$shipped" | grep -i -v ${arg#-}
-  else
-    # gsh foo -> show only foo's branches
-    echo "$shipped" | grep -i $1
-  fi
-}
-
-# copies to clipboard the SHA of the nth commit listed by git log
-function gshow() {
+function gsho() {
   if [[ $1 =~ ^[0-9]+$ ]]; then
     git_log_nth $1 | chomp | xargs git show
   else
     git show $1
   fi
 }
-alias gsho="gshow"
 
 function gus() {
   if [ $# = 0 ]; then
