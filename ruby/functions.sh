@@ -17,9 +17,6 @@ function spin?() {
   if [[ $num_matches = 0 ]]; then
     # if 0 files were found, quit
     echo "No matches"
-  elif [[ $num_matches = 1 ]]; then
-    # if 1 file was found, go ahead & run it
-    run "spin push ${matches[0]}"
   else
     # otherwise, display a numbered list of all matches
     for (( i=0; i<${num_matches}; i++ )); do
@@ -40,6 +37,9 @@ function spin?() {
       spec=${matches[$index-1]}
       specs="$specs $spec"
     done
+
+    # remove leading space
+    specs=$(echo $specs)
 
     # run the selected spec(s)
     run "spin push $specs"
