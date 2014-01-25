@@ -1,5 +1,7 @@
 document.title = document.title.replace('- Wikipedia, the free encyclopedia', '(Wikipedia)');
 
+$('body').css("background", "none");
+
 $('#siteNotice, #siteSub, #mw-head-base, #mw-page-base, #mw-head, #mw-panel, #toctitle, .mw-editsection, .mbox-image, .magnify').remove();
 
 setTimeout(function() {
@@ -33,8 +35,12 @@ $('.thumbinner').css({
 
 $('#content').css({
   'width': '850px',
-  'background': '#fff'
+  'background': '#fff',
+  'border': 'none',
+  'margin': '0'
 });
+
+$('#contentSub').css('marginLeft', '-6px');
 
 $('table.metadata').css({
   'border': 'none',
@@ -70,9 +76,11 @@ var toc = $('.toc').css({
 
 var container = $('<div></div>')
 container.insertAfter(toc).append(toc).css({
+  'background-color': 'rgb(246, 246, 246)',
   'position': 'fixed',
-  'left': '1080px',
+  'left': '895px',
   'top': '0px',
+  'width': '500px',
   'height': '100%',
   'overflow': 'hidden'
 });
