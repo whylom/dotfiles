@@ -9,7 +9,15 @@ $('#files .file .data .diff-line-code').css('font-size', '12px');
 // request comments, so I don't stupidly click on it so often.
 $('button[name=comment_and_close]').addClass('danger');
 
-
+// In the pull request Files Changed tab, hide the diffs (but show filenames)
+// for files we don't need to see: images, and lib assets.
+$('span.js-selectable-text').filter(function() {
+  var hideable = [".png", ".jpg", ".svg", "lib/assets"];
+  for (var i = 0; i <= hideable.length; i++) {
+    if ($(this).is(':contains("'+ hideable[i] + '")')) return true;
+  };
+  return false;
+}).parents('.file').children('.data, .image').remove();
 
 // Make it easier to copy titles of issues and pull requests
 (function() {
