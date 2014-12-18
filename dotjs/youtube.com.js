@@ -1,7 +1,7 @@
 var times = 0;
 
 (function() {
-  // Hide comments, siderbar, and footer.
+  // Hide comments, sidebar, and footer.
   $('#watch-discussion').remove();
   $('.comments-pagination').remove();
   $('.watch-sidebar-section').remove();
@@ -12,6 +12,13 @@ var times = 0;
   $('#watch-description-toggle').remove();
   $('.yt-uix-expander-collapsed').removeClass('yt-uix-expander-collapsed');
   $('#watch-description-toggle').remove();
+
+  // remove sidebar & widen main content section to fill the space
+  $('#watch7-sidebar-contents').remove();
+  $('#watch7-content').css({
+    'width': '856px',
+    'paddingLeft': '105px',
+  });
 
   // Get video's duration from meta tag data.
   var duration = $('meta[itemprop="duration"]').attr('content');
@@ -33,8 +40,8 @@ var times = 0;
   var time = hrs ? [hrs, min, sec] : [min, sec];
   document.title = document.title.replace('▶ ', '').replace('- YouTube', '(' + time.join(":") + ')');
 
-  // Repeat 10 times (once a second) to catch asynchronous changes to the page.
-  if (++times < 10) {
+  // Repeat times (once a second) to catch asynchronous changes to the page.
+  if (++times < 50) {
     setTimeout(arguments.callee, 1000);
   }
 })();
