@@ -1,10 +1,6 @@
--- Unless we trim the height of a window by 22 pixels,
--- the width is affected. No idea why.
-set height_offset to 22
-
 -- DISPLAY_WIDTH and DISPLAY_HEIGHT are set when the shell loads.
-set width to (do shell script "echo $DISPLAY_WIDTH")
-set height to (do shell script "echo $DISPLAY_HEIGHT") - height_offset
+set width to (do shell script "echo $DISPLAY_WIDTH") + 2
+set height to (do shell script "echo $DISPLAY_HEIGHT")
 
 -- Resize all iTerm windows to the display's width and height.
 tell application "iTerm"
