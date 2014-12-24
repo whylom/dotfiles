@@ -1,3 +1,6 @@
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # environment variables
 export EDITOR="subl -w"
 export PATH=/usr/local/heroku/bin:/usr/local/bin:$PATH
