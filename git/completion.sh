@@ -1,5 +1,5 @@
 __branches() {
-  local list=$(git branch -a | tr -d ' *' | grep origin | grep -v HEAD | sed 's|remotes/origin/||')
+  local list=$(git branch -a | tr -d ' *' | grep -v HEAD | sed 's|remotes/origin/||')
   COMPREPLY=($(compgen -W "${list}" -- ${COMP_WORDS[COMP_CWORD]}))
 }
 
