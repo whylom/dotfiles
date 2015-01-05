@@ -1,5 +1,3 @@
-var times = 0;
-
 (function() {
   // Hide comments, sidebar, and footer.
   $('#watch-discussion').remove();
@@ -40,8 +38,6 @@ var times = 0;
   var time = hrs ? [hrs, min, sec] : [min, sec];
   document.title = document.title.replace('▶ ', '').replace('- YouTube', '(' + time.join(":") + ')');
 
-  // Repeat times (once a second) to catch asynchronous changes to the page.
-  if (++times < 50) {
-    setTimeout(arguments.callee, 1000);
-  }
+  // Keep repeating all of the above to catch asynchronous changes to the page.
+  setTimeout(arguments.callee, 1000);
 })();
