@@ -104,7 +104,7 @@ function gbl() {
   if [ -z $2 ]; then
     git blame $1
   else
-    git blame $1 | grep -C 5 "$2"
+    git blame $1 | grep -C 1 "$2"
   fi
 }
 
