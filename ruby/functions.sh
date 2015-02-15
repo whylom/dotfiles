@@ -3,7 +3,7 @@ function spin?() {
   query="$(echo $@ | sed 's/ /.*/g')"
 
   # get paths to all relevant Ruby files in the spec directory
-  specs=$(find spec -name *.rb | grep -vE '(factories|helper|support)')
+  specs=$(find spec -name "*_spec.rb")
 
   # add any spec that matches the query pattern to the results array
   matches=()
