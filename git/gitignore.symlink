@@ -1,5 +1,5 @@
 .DS_Store
-Thumbs.db
+.powrc
 .sass-cache
 nohup.out
-.powrc
+Thumbs.db
