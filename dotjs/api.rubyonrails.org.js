@@ -1,6 +1,18 @@
-// Taken from the original blue-theme used by SDoc
-// https://github.com/voloko/sdoc
+/*
+  Define custom CSS to restyle the official Ruby on Rails API docs:
+    * text size & line height increased
+    * red & tan theme replaced with default SDoc blue & gray
+    * code styled to imitate GitHub markdown
+*/
 var css = '\
+  body {                               \
+    font-size: 0.92em;                 \
+  }                                    \
+                                       \
+  #content {                           \
+    line-height: 1.45em;               \
+  }                                    \
+                                       \
   .banner {                            \
     color: #000;                       \
     background: #EDF3FE;               \
@@ -30,6 +42,16 @@ var css = '\
   .panel .tree ul li.current:hover,    \
   .panel .result ul li.current:hover { \
     background: #2965C0;               \
+  }                                    \
+                                       \
+  .description pre {                   \
+    font-size: 90%;                    \
+    background-color: #f7f7f7;         \
+    padding: 16px;                     \
+  }                                    \
+                                       \
+  code {                               \
+    font-family: Consolas, monospace;  \
   }                                    \
 ';
 
