@@ -1,11 +1,20 @@
 var css = '\
-  .list-header .card-count { \
-    position: absolute;      \
-    right: 21px;             \
-    top: 3px;                \
-    color: #999;             \
-    font-size: 12px;         \
-  }                          \
+  .list-header .card-count {          \
+    position: absolute;               \
+    right: 21px;                      \
+    top: 3px;                         \
+    color: #999;                      \
+    font-size: 12px;                  \
+  }                                   \
+                                      \
+  .badge-state-due-soon {             \
+    color: #8c8c8c;                   \
+    background-color: #fff;           \
+  }                                   \
+                                      \
+  .badge-state-due-soon .badge-icon { \
+    color: #a6a6a6;                   \
+  }                                   \
 ';
 
 var style = $('<style></style>').html(css);
