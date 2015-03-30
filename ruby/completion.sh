@@ -1,13 +1,14 @@
 __heroku() {
-  local index list cmd
+  local index cmd commands list
 
   index=${#COMP_WORDS[@]}
   cmd="${COMP_WORDS[COMP_CWORD-1]}"
+  commands="addons apps auth authorizations config domains logs ps releases run sharing account certs drains fork git help keys labs maintenance members orgs pg pgbackups plugins regions stack status update version"
 
   if [ $index -eq 2 ]; then
-    list="addons apps auth:login auth:logout auth:token auth:whoami authorizations config domains logs ps releases run sharing account certs drains fork git help keys labs maintenance members orgs pg pgbackups plugins regions stack status update version"
+    list=$commands
   elif [[ $cmd = "help" ]]; then
-    list="addons apps auth authorizations config domains logs ps releases run sharing account certs drains fork git help keys labs maintenance members orgs pg pgbackups plugins regions stack status update version"
+    list=$commands
   elif [[ $cmd = "run" ]]; then
     list="console"
   elif [[ $cmd = "-r" ]]; then
