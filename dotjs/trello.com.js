@@ -1,48 +1,54 @@
 var css = '\
-  .window-title .icon-subscribe,      \
-  .window-header-icon {               \
-    display: none;                    \
-  }                                   \
-                                      \
-  h2.window-title-text {              \
-    font-size: 18pt;                  \
-  }                                   \
-                                      \
-  .window-sidebar {                   \
-    opacity: 0.1;                     \
-    transition: opacity 0.18s;        \
-  }                                   \
-                                      \
-  .window-sidebar:hover {             \
-    opacity: 1.0;                     \
-  }                                   \
-                                      \
-  p {                                 \
-    margin: 0 0 16px;                 \
-    line-height: 1.6;                 \
-  }                                   \
-                                      \
-  .known-service-link {               \
-    background: none;                 \
-    padding: 2px 0px;                 \
-  }                                   \
-                                      \
-  .list-header .card-count {          \
-    position: absolute;               \
-    right: 26px;                      \
-    top: 8px;                         \
-    color: #999;                      \
-    font-size: 12px;                  \
-  }                                   \
-                                      \
-  .badge-state-due-soon {             \
-    color: #8c8c8c;                   \
-    background-color: #fff;           \
-  }                                   \
-                                      \
-  .badge-state-due-soon .badge-icon { \
-    color: #a6a6a6;                   \
-  }                                   \
+  .window-title .icon-subscribe,            \
+  .window-header-icon {                     \
+    display: none;                          \
+  }                                         \
+                                            \
+  h2.window-title-text {                    \
+    font-size: 18pt;                        \
+  }                                         \
+                                            \
+  .window-sidebar {                         \
+    opacity: 0.1;                           \
+    transition: opacity 0.18s;              \
+  }                                         \
+                                            \
+  .window-sidebar:hover {                   \
+    opacity: 1.0;                           \
+  }                                         \
+                                            \
+  p {                                       \
+    margin: 0 0 16px;                       \
+    line-height: 1.6;                       \
+  }                                         \
+                                            \
+  .known-service-link {                     \
+    background: none;                       \
+    padding: 2px 0px;                       \
+  }                                         \
+                                            \
+  .list-header .card-count {                \
+    position: absolute;                     \
+    right: 26px;                            \
+    top: 8px;                               \
+    color: #999;                            \
+    font-size: 12px;                        \
+  }                                         \
+                                            \
+  .badge-state-due-soon,                    \
+  .badge-state-due-now,                     \
+  .badge-state-due-soon:hover,              \
+  .badge-state-due-now:hover {              \
+    color: #8c8c8c;                         \
+    background-color: #fff;                 \
+  }                                         \
+                                            \
+  .badge-state-due-soon .badge-icon,        \
+  .badge-state-due-soon:hover .badge-icon,  \
+  .badge-state-due-now .badge-icon,         \
+  .badge-state-due-now:hover .badge-icon {  \
+    color: #a6a6a6;                         \
+  }                                         \
 ';
 
 var style = $('<style></style>').html(css);
