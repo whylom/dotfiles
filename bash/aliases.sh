@@ -4,6 +4,8 @@ alias reload="source ~/.bashrc"
 alias ls="ls -AGh"
 alias ll="ls -AGhl"
 
+alias p="ping"
+alias p8="ping 8.8.8.8"
 
 # useful shortcuts for Bash 1-liners
 
