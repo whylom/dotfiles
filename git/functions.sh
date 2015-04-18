@@ -1,6 +1,5 @@
 function git_branch() {
-  ref=$(git symbolic-ref HEAD 2>/dev/null)
-  echo ${ref#refs/heads/}
+  git symbolic-ref HEAD 2>/dev/null | last_dir_in_path
 }
 
 function git_prompt() {
@@ -12,18 +11,8 @@ function git_prompt() {
   fi
 }
 
-function git_log_nth() {
-  git log --pretty=format:'%H' | nthline $1
-}
-
-function git_status_nth() {
-  git status --porcelain | strp | nthline $1 | tr -s ' ' | nthword 2 | xargs echo
-}
-
-function run() {
-  echo -e "\033[36m$1\033[0m" # warn user what we're about to do
-  sleep 1.5                   # give them some time to Ctrl-C
-  eval $1                     # FIRE!
+function git_nth_in_status() {
+  git status --porcelain | strp | nthline $1 | awk '{ print $2 }'
 }
 
 # takes multiple arguments, any of which can be
@@ -34,9 +23,9 @@ function run() {
 function ga() {
   for arg in $@; do
     if [[ $arg =~ ^[0-9]+$ ]]; then
-      git add "$(git_status_nth $arg)"
+      git add "$(git_nth_in_status $arg)"
     elif [[ $arg =~ ^[MD?]$ ]]; then
-      git status --porcelain | strp | grep "^$arg" | nthword 2 | inline | xargs git add
+      git status --porcelain | strp | grep "^$arg" | awk '{ print $2 }' | inline | xargs git add
     else
       git add $arg
     fi
@@ -46,31 +35,24 @@ function ga() {
 
 function gco() {
   if [[ $1 =~ ^[0-9]+$ ]]; then
-    git_status_nth $1 | xargs git checkout
+    git checkout $(git_nth_in_status $1)
   else
     git checkout "$@"
   fi
   gs
 }
 
-function gcom() {
-  branch="$(git_branch)"
-  if [[ $branch != "master" ]]; then
-    git checkout master
-  fi
-}
-
 # copies to clipboard the nth filename listed by git status
 function gcp() {
-  git_status_nth $1 | chomp | pbcopy
+  git_nth_in_status $1 | chomp | pbcopy
 }
 
 # shows diff for nth file listed by git status
 function gd() {
   if [[ $1 =~ ^[0-9]+$ ]]; then
-    git_status_nth $1 | xargs git diff
+    git diff $(git_nth_in_status $1)
   else
-    git diff $1
+    git diff "$@"
   fi
 }
 
@@ -87,7 +69,7 @@ function gprune() {
   if [[ $confirm != 'y' ]]; then return; fi
 
   local local_branches=$(git branch | tr -d ' *')
-  local remote_branches=$(git ls-remote --heads origin | awk '{ print $2 }'  | sed 's|refs/heads/||')
+  local remote_branches=$(git ls-remote --heads origin | awk '{ print $2 }' | sed 's|refs/heads/||')
 
   # delete any local branch that does not have a corresponding remote branch
   for branch in $local_branches; do
@@ -109,7 +91,7 @@ function gbl() {
 }
 
 function grm() {
-  rm $(git_status_nth $1)
+  rm $(git_nth_in_status $1)
   gs
 }
 
@@ -133,26 +115,13 @@ function gs() {
   IFS="${OIFS}"
 }
 
-# copies to clipboard the SHA of the nth commit listed by git log
-function gsha() {
-  git_log_nth $1 | chomp | pbcopy
-}
-
-function gsho() {
-  if [[ $1 =~ ^[0-9]+$ ]]; then
-    git_log_nth $1 | chomp | xargs git show
-  else
-    git show $1
-  fi
-}
-
 function gus() {
   if [ $# = 0 ]; then
     git reset -q HEAD
   else
     for arg in $@; do
       if [[ $arg =~ ^[0-9]+$ ]]; then
-        git reset -q HEAD "$(git_status_nth $arg)"
+        git reset -q HEAD "$(git_nth_in_status $arg)"
       else
         git reset -q HEAD $arg
       fi

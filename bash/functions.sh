@@ -1,17 +1,18 @@
-# useful shortcuts for Bash 1-liners
+function run() {
+  echo -e "\033[36m$1\033[0m" # warn user what we're about to do
+  sleep 1.5                   # give them some time to Ctrl-C
+  eval $1                     # FIRE!
+}
+
+function last_dir_in_path() {
+  # using "/" as the delimiter, print the last item
+  awk -F / '{ print $NF }'
+}
 
 function nthline() {
-  head -n $1 | tail -1
+  sed -n $1p
 }
 
 function nthword() {
   cut -d ' ' -f $1
-}
-
-function 1stword() {
-  cut -d ' ' -f 1
-}
-
-function warn() {
-  echo -e "\033[36m$1\033[0m"
 }
