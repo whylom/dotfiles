@@ -1,4 +1,5 @@
 alias b="bundle exec"
+alias b?="bundle check"
 alias bi="run 'bundle install --path=vendor/bundle'"
 
 alias c="bundle exec rails console"
@@ -11,7 +12,14 @@ function rdbm() {
 
 alias h="heroku"
 alias h?="heroku help"
+
 alias db!="run 'heroku pg:psql -r production'"
+
+alias hc="heroku config"
+alias hcp="heroku config -r production"
+alias hcp?="heroku config -r production | grep"
+alias hcs="heroku config -r staging"
+alias hcs?="heroku config -r staging | grep"
 
 function c!() {
   run "heroku run console -r ${1:-production}"
