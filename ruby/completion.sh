@@ -40,4 +40,7 @@ complete -F __heroku heroku
 complete -F __heroku h
 complete -F __heroku h?
 complete -F __envs c!
+complete -F __envs h!
+complete -F __envs db!
+complete -F __envs rdbm!
 complete -F __rbenv rbenv
