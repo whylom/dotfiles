@@ -35,6 +35,10 @@ var css = '\
     font-size: 12px;                        \
   }                                         \
                                             \
+  .list-card.active-card {                  \
+    background-color: #ffffcc;              \
+  }                                         \
+                                            \
   .badge-state-due-soon,                    \
   .badge-state-due-now,                     \
   .badge-state-due-soon:hover,              \
