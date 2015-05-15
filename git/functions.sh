@@ -1,5 +1,5 @@
 function git_branch() {
-  git symbolic-ref HEAD 2>/dev/null | last_dir_in_path
+  git rev-parse --abbrev-ref HEAD
 }
 
 function git_prompt() {

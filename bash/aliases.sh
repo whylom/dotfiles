@@ -1,6 +1,7 @@
 # generally useful aliases
 alias cd..="cd .."
 alias reload="source ~/.bashrc"
+alias reload!="reload"
 alias ls="ls -AGh"
 alias ll="ls -AGhl"
 
