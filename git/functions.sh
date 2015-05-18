@@ -1,5 +1,5 @@
 function git_branch() {
-  git rev-parse --abbrev-ref HEAD
+  git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
 function git_prompt() {
