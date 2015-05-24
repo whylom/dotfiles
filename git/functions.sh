@@ -56,6 +56,11 @@ function gd() {
   fi
 }
 
+function gmerged() {
+  gl $1..master --ancestry-path --merges | tail -1
+  echo ''
+}
+
 function gp() {
   run "git push origin ${1:-$(git_branch)}"
 }
@@ -86,7 +91,7 @@ function gbl() {
   if [ -z $2 ]; then
     git blame $1
   else
-    git blame $1 | grep -C 1 "$2"
+    git blame $1 | grep $2
   fi
 }
 
