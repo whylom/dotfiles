@@ -8,13 +8,17 @@ alias r="bundle exec rake"
 alias rs="bundle exec rspec"
 
 function rdbm() {
-  bundle exec rake db:migrate RAILS_ENV=${1:-development}
+  run "bundle exec rake db:migrate RAILS_ENV=${1:-development}"
 }
 
-alias rdbm~="bundle exec rake db:migrate:redo"
-alias rdbm-="bundle exec rake db:rollback"
+function rdbm!() {
+  run "heroku run rake db:migrate -r ${1:-production}"
+}
 
-alias s!="spin serve"
+alias rdbm~="run 'bundle exec rake db:migrate:redo'"
+alias rdbm-="run 'bundle exec rake db:rollback'"
+
+alias s!="run 'spin serve'"
 
 function s() {
   spin push $@
@@ -43,8 +47,4 @@ function db() {
 
 function db!() {
   run "heroku pg:psql -r ${1:-production}"
-}
-
-function rdbm!() {
-  run "heroku run rake db:migrate -r ${1:-production}"
 }
