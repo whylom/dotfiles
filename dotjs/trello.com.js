@@ -39,6 +39,10 @@ var css = '\
     background-color: #ffffcc;              \
   }                                         \
                                             \
+  .active-card .list-card-cover {           \
+    opacity: 0.25;                          \
+  }                                         \
+                                            \
   .badge-state-due-soon,                    \
   .badge-state-due-now,                     \
   .badge-state-due-soon:hover,              \
