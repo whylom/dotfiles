@@ -42,6 +42,15 @@ function gco() {
   gs
 }
 
+function gco!() {
+  if [ -z $1 ]; then
+    run "git checkout -- ."
+  else
+    run 'git fetch'
+    run "git checkout $1"
+  fi
+}
+
 # copies to clipboard the nth filename listed by git status
 function gcp() {
   git_nth_in_status $1 | chomp | pbcopy
