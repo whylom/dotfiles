@@ -12,7 +12,7 @@ __heroku() {
   elif [[ $cmd = "run" ]]; then
     list="console"
   elif [[ $cmd = "-r" ]]; then
-    list="staging production"
+    list="infra staging production"
   elif [[ $cmd = "-a" ]]; then
     list=$HEROKU_APPS # defined in private.sh
   fi
@@ -38,7 +38,10 @@ __envs() {
 complete -F __bundle bundle
 complete -F __heroku heroku
 complete -F __heroku h
+complete -F __heroku hc
 complete -F __heroku h?
+complete -F __heroku h!
+complete -F __envs hl
 complete -F __envs c!
 complete -F __envs h!
 complete -F __envs db!

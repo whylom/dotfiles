@@ -8,12 +8,16 @@ var css = '\
     font-size: 18pt;                        \
   }                                         \
                                             \
-  .window-sidebar {                         \
+  .window-sidebar,                          \
+  .js-current-list,                         \
+  .js-card-detail-age {                     \
     opacity: 0.1;                           \
     transition: opacity 0.18s;              \
   }                                         \
                                             \
-  .window-sidebar:hover {                   \
+  .window-sidebar:hover,                    \
+  .js-current-list:hover,                   \
+  .js-card-detail-age:hover {               \
     opacity: 1.0;                           \
   }                                         \
                                             \
@@ -82,7 +86,6 @@ $('head').append(style);
   $("h3:contains('Description')").remove();
   $("h3:contains('Members')").remove();
   $("h3:contains('Activity')").parent('div').remove();
-  $('.window-title p:contains("in list")').remove();
 
   setTimeout(arguments.callee, 100);
 })();

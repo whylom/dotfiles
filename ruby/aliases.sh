@@ -4,6 +4,7 @@ alias bi="run 'bundle install --path=vendor/bundle'"
 
 alias c="run 'bundle exec rails console'"
 alias r!="run 'bundle exec rails server'"
+alias r-="cat tmp/pids/server.pid | xargs kill -9"
 alias r="bundle exec rake"
 alias rs="bundle exec rspec"
 
@@ -34,6 +35,13 @@ alias hcp="heroku config -r production"
 alias hcs="heroku config -r staging"
 alias hcp?="heroku config -r production | grep -i"
 alias hcs?="heroku config -r staging | grep -i"
+alias hc!="heroku config:set"
+alias hcp!="heroku config:set -r production"
+alias hcs!="heroku config:set -r staging"
+
+function hl() {
+  run "heroku logs --tail -r ${1:-production}"
+}
 
 function c!() {
   run "heroku run console -r ${1:-production}"

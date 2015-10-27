@@ -3,3 +3,4 @@
 .sass-cache
 nohup.out
 Thumbs.db
+.ruby-gemset
