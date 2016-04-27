@@ -6,10 +6,17 @@ function minutes(n) {
   return seconds(60) * n;
 }
 
-// // hide all the fucking sidebars
-// var domain = document.location.hostname;
-// var blacklist = 'www.google.com app.simplenote.com';
+// var selectors = [
+//   '#sharing',
+//   '#sidebar',
+//   '#sidebar1',
+//   '.sidebar'
+// ].join(',');
 
-// if (!blacklist.includes(domain)) {
-//   $('#sidebar, .sidebar').css('opacity', '0.1');
-// }
+// $(selectors).css('opacity', 0.1);
+
+// $(selectors).hover(function() {
+//   $(this).css('opacity', 1);
+// }, function() {
+//   $(this).css('opacity', 0.1);
+// });

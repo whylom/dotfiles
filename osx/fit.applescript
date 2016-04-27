@@ -1,9 +1,11 @@
 -- Get the dimensions of the current display as a string like "1440x900"
-set dimensions to do shell script "system_profiler SPDisplaysDataType | grep 'Resolution' | tr -d ' ' | cut -f 2 -d ':'"
+-- set dimensions to do shell script "system_profiler SPDisplaysDataType | grep 'Resolution' | tr -d ' Retina' | cut -f 2 -d ':'"
 
 -- Use `cut` to extract width & height since Applescript doesn't have string functions.
-set width  to do shell script "echo " & dimensions & " | cut -f 1 -d 'x'"
-set height to do shell script "echo " & dimensions & " | cut -f 2 -d 'x'"
+-- set width  to do shell script "echo " & dimensions & " | cut -f 1 -d 'x'"
+-- set height to do shell script "echo " & dimensions & " | cut -f 2 -d 'x'"
+set width  to 1438
+set height to 877
 
 -- No idea why this is necessary, but it is.
 set padding to 2

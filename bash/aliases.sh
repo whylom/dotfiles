@@ -5,6 +5,8 @@ alias reload!="reload"
 alias ls="ls -AGh"
 alias ll="ls -AGhl"
 
+alias http="python -m SimpleHTTPServer"
+
 alias p="ping"
 alias p8="ping 8.8.8.8"
 

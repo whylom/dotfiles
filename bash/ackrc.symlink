@@ -1,0 +1,8 @@
+--color
+--type-add=ruby=.haml,.rake,.ru
+--type-add=html=.html.erb,.html.haml
+--type-add=js=.js.erb
+--type-add=css=.sass,.scss,.less
+--type-add=markdown=.md,.markdown
+--ignore-dir=bundle
+--ignore-dir=logs

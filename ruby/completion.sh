@@ -12,7 +12,7 @@ __heroku() {
   elif [[ $cmd = "run" ]]; then
     list="console"
   elif [[ $cmd = "-r" ]]; then
-    list="infra staging production"
+    list="development staging production"
   elif [[ $cmd = "-a" ]]; then
     list=$HEROKU_APPS # defined in private.sh
   fi
@@ -31,7 +31,7 @@ __rbenv() {
 }
 
 __envs() {
-  local list="staging production"
+  local list="development staging production"
   COMPREPLY=($(compgen -W "${list}" -- ${COMP_WORDS[COMP_CWORD]}))
 }
 
@@ -39,6 +39,7 @@ complete -F __bundle bundle
 complete -F __heroku heroku
 complete -F __heroku h
 complete -F __heroku hc
+complete -F __heroku hc!
 complete -F __heroku h?
 complete -F __heroku h!
 complete -F __envs hl

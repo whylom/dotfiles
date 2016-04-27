@@ -4,8 +4,21 @@ var css = '\
     display: none;                          \
   }                                         \
                                             \
+  h2 {                                      \
+    margin: 28px 0 9px;                     \
+  }                                         \
+                                            \
   h2.window-title-text {                    \
     font-size: 18pt;                        \
+  }                                         \
+                                            \
+                                            \
+  h3, h4, h5, h6 {                          \
+    margin-top: 25px;                       \
+  }                                         \
+                                            \
+  pre {                                     \
+    margin: 16px 0;                         \
   }                                         \
                                             \
   .window-sidebar,                          \
@@ -26,6 +39,10 @@ var css = '\
     line-height: 1.6;                       \
   }                                         \
                                             \
+  .known-service-icon {                     \
+    display: none;                          \
+  }                                         \
+                                            \
   .known-service-link {                     \
     background: none;                       \
     padding: 2px 0px;                       \
@@ -33,7 +50,7 @@ var css = '\
                                             \
   .list-header .card-count {                \
     position: absolute;                     \
-    right: 26px;                            \
+    right: 30px;                            \
     top: 8px;                               \
     color: #999;                            \
     font-size: 12px;                        \
@@ -61,6 +78,10 @@ var css = '\
   .badge-state-due-now:hover .badge-icon {  \
     color: #a6a6a6;                         \
   }                                         \
+                                            \
+  .markeddown ol, .markeddown ul {          \
+    margin: 20px 0;                         \
+  }                                         \
 ';
 
 var style = $('<style></style>').html(css);
@@ -69,23 +90,29 @@ $('head').append(style);
 (function() {
   // display the # of cards in each list's header
   $('.list').each(function() {
-    var header   = $('.list-header h2', this);
+    var header = $('.list-header', this);
+    var extras   = $('.list-header-extras', header);
     var numCards = $('.list-card', this).length;
     var cardCount = header.find('.card-count');
 
     if (cardCount.length) {
-      cardCount.html(numCards);
+      cardCount.html(numCards + ' cards');
     } else {
-      header.prepend(
-        $('<span class="card-count">'+ numCards +'</span>')
+      extras.before(
+        $('<span class="card-count">'+ numCards +' cards</span>')
       );
     }
   })
 
+  // always display the entire card description
+  $('.is-hide-full').removeClass('is-hide-full');
+
   $("h3:contains('Description') ~ a").remove();
   $("h3:contains('Description')").remove();
+  $("h3:contains('Labels')").remove();
   $("h3:contains('Members')").remove();
   $("h3:contains('Activity')").parent('div').remove();
+  $(".card-detail-item-header-edit").remove();
 
-  setTimeout(arguments.callee, 100);
+  setTimeout(arguments.callee, 500);
 })();

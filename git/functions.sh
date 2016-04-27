@@ -80,13 +80,8 @@ function gpu() {
 
 function gp!() {
   branch=${1:-$(git_branch)}
-  if [[ $branch = 'staging' ]]; then
-    run "git push --force origin master:staging"
-  else
-    run "git push --force origin ${branch}"
-  fi
+  run "git push --force-with-lease origin ${branch}"
 }
-
 
 function gprune() {
   read -p "This will delete any local branches you haven't yet pushed! Proceed? (y/n) " confirm
