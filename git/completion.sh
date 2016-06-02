@@ -18,7 +18,7 @@ __git_completion() {
   if [ $index -eq 2 ]; then
     list=$commands
   elif [[ $cmd = "push" ]]; then
-    list="heroku origin production staging development"
+    list=$(git remote)
   elif [[ $cmd = "staging" ]] || [[ $cmd = "development" ]]; then
     list=$(git branch -a | tr -d ' *' | grep -v HEAD | sed 's|remotes/origin/||' | grep -v remotes)
   fi
