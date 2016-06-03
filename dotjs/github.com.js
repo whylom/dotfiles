@@ -9,6 +9,17 @@ $('button[name=comment_and_close]').addClass('danger');
 
 // hitting the "Y" key in a file already expands the URL to use the commit SHA
 // let's make Shift-Y shorten the SHA to the first 7 chars
+$(document).on('keydown', function(e) {
+  if (e.keyCode == 89 && e.shiftKey) {
+    var url = document.location.toString();
+
+    var start = url.search('blob/') + 5;
+    var fullSHA = url.substr(start, 40);
+    var shortSHA = fullSHA.substr(0, 7);
+
+    document.location = url.replace(fullSHA, shortSHA);
+  }
+});
 
 
 
