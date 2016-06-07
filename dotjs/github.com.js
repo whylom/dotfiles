@@ -13,7 +13,10 @@ $(document).on('keydown', function(e) {
   if (e.keyCode == 89 && e.shiftKey) {
     var url = document.location.toString();
 
-    var start = url.search('blob/') + 5;
+    var blob = url.search('blob/');
+    if (blog == -1) return;
+
+    var start = blob + 5;
     var fullSHA = url.substr(start, 40);
     var shortSHA = fullSHA.substr(0, 7);
 
