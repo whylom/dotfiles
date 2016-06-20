@@ -13,13 +13,11 @@ $(document).on('keydown', function(e) {
   if (e.keyCode == 89 && e.shiftKey) {
     var url = document.location.toString();
 
-    var blob = url.search('blob/');
-    if (blog == -1) return;
+    var matches = url.match( /(blob|commit)\/([a-f0-9]+)/ );
+    if (!matches) return;
 
-    var start = blob + 5;
-    var fullSHA = url.substr(start, 40);
+    var fullSHA = matches[2];
     var shortSHA = fullSHA.substr(0, 7);
-
     document.location = url.replace(fullSHA, shortSHA);
   }
 });
