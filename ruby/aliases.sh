@@ -55,6 +55,7 @@ function db() {
 
 function db!() {
   local env=${1:-production}
+  echo "Looking up follower..."
   local follower=$(heroku pg:info -r $env | grep Followers | awk '{print $2}')
   run "heroku pg:psql ${follower:-DATABASE_URL} -r $env"
 }
