@@ -10,7 +10,3 @@ for original in $HOME/.dotfiles/*/**.symlink; do
   link="$HOME/.$link"        # prepend with "~/."
   symlink $original $link
 done
-
-# manually create symlinks that defy naming conventions
-symlink ~/.dotfiles/dotjs ~/.js
-symlink ~/.dotfiles/bashrc.sh ~/.bashrc
