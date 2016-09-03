@@ -18,5 +18,8 @@ if [ ! -f ~/Library/Fonts/DejaVuSansMono.ttf ]; then
   cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
 fi
 
+# Install our config for Sublime Text 3.
+cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+
 # Configure OS X settings to be just the way we like it.
 osx/configure
