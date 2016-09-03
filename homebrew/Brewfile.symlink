@@ -1,0 +1,12 @@
+tap 'caskroom/cask'
+tap 'homebrew/services'
+tap 'homebrew/versions'
+
+brew 'git'
+brew 'wget'
+
+brew 'chruby'
+brew 'ruby-install'
+
+cask 'google-chrome'
+cask 'dropbox'
