@@ -1,18 +1,14 @@
-function symlink() {
-  if [ -h $2 ]; then rm $2; fi # delete symlink if it exists
-  ln -s ~/.dotfiles/$1 $2
-}
-
-# symlink all dotfiles ending in .symlink
-for original in */**.symlink; do
+# Create a symlink to all dotfiles whose name ends in ".symlink".
+# Eg: `~/.foo` will be symlinked to `~/.dotfiles/foo.symlink`
+for original in ~/.dotfiles/*/**.symlink; do
   link=$(basename $original) # extract filename from path
   link=${link%.symlink}      # remove ".symlink"
   link="$HOME/.$link"        # prepend with "~/."
-  symlink $original $link
+  ln -s -f $original $link
 done
 
-# explictly symlink certain folders
-symlink .js ~/.js
+# Explictly symlink certain folders.
+ln -s -f ~/.dotfiles/.js ~/.js
 
-# make sure .bash_profile is in place
+# Install our 1-line .bash_profile
 cp bash/.bash_profile ~/.bash_profile
