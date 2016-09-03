@@ -4,19 +4,17 @@ for original in ~/.dotfiles/*/**.symlink; do
   link=$(basename $original) # extract filename from path
   link=${link%.symlink}      # remove ".symlink"
   link="$HOME/.$link"        # prepend with "~/."
-  ln -s -f $original $link
+  ln -sf $original $link
 done
 
 # Explictly symlink certain folders.
-ln -s -f ~/.dotfiles/.js ~/.js
+ln -snf ~/.dotfiles/.js ~/.js
 
 # Install our 1-line .bash_profile
 cp bash/.bash_profile ~/.bash_profile
 
-# Make sure our favorite monospace font is installed.
-if [ ! -f ~/Library/Fonts/DejaVuSansMono.ttf ]; then
-  cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
-fi
+# Install our favorite monospace font.
+cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
 
 # Install our config for Sublime Text 3.
 cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
