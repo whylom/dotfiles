@@ -10,3 +10,4 @@ brew 'ruby-install'
 
 cask 'google-chrome'
 cask 'dropbox'
+cask 'sublime-text'
