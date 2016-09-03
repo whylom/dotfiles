@@ -1,9 +1,9 @@
-# rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # environment variables
 export EDITOR="subl -w"
-export PATH=/usr/local/heroku/bin:/usr/local/bin:$PATH
 
 # load .sh files
 for f in ~/.dotfiles/**/*.sh; do source $f; done
@@ -12,4 +12,4 @@ for f in ~/.dotfiles/**/*.sh; do source $f; done
 if [ -e ~/.dotfiles/private.sh ]; then source ~/.dotfiles/private.sh; fi
 
 # go to our favorite directory if we're in ~
-if [ $(pwd) = $HOME ]; then cd $FAVE; fi
+if [ $PWD = $HOME ]; then cd $FAVE; fi
