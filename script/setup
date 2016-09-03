@@ -21,7 +21,10 @@ fi
 
 # Install Homebrew packages in Brewfile (if user desires it)
 read -p "Install Homebrew packages in Brewfile? (Y/n) " response
-if [[ $response != 'n' ]]; then brew bundle --global; fi
+if [[ $response != 'n' ]]; then
+  brew tap homebrew/bundle # make sure `brew bundle` is available
+  brew bundle --global
+fi
 
 # Install our config for Sublime Text 3.
 cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
