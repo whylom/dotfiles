@@ -20,4 +20,9 @@ cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
 cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
 
 # Configure OS X settings to be just the way we like it.
-osx/configure
+read -p "Update OS X settings? (Y/n) " response
+if [[ $response != 'n' ]]; then osx/configure; fi
+
+# Install Homebrew packages in Brewfile
+read -p "Install Homebrew packages in Brewfile? (Y/n) " response
+if [[ $response != 'n' ]]; then brew bundle --global; fi
