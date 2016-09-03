@@ -12,3 +12,8 @@ ln -s -f ~/.dotfiles/.js ~/.js
 
 # Install our 1-line .bash_profile
 cp bash/.bash_profile ~/.bash_profile
+
+# Make sure our favorite monospace font is installed
+if [ ! -f ~/Library/Fonts/DejaVuSansMono.ttf ]; then
+  cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
+fi
