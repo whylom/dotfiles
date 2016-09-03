@@ -10,19 +10,24 @@ done
 # Explictly symlink certain folders.
 ln -snf ~/.dotfiles/.js ~/.js
 
-# Install our 1-line .bash_profile
-cp bash/.bash_profile ~/.bash_profile
-
-# Install our favorite monospace font.
-cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
-
-# Install our config for Sublime Text 3.
-cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
-
 # Configure OS X settings to be just the way we like it.
 read -p "Update OS X settings? (Y/n) " response
 if [[ $response != 'n' ]]; then osx/configure; fi
 
-# Install Homebrew packages in Brewfile
+# Make sure Homebrew is installed
+if ! type brew &> /dev/null; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Install Homebrew packages in Brewfile (if user desires it)
 read -p "Install Homebrew packages in Brewfile? (Y/n) " response
 if [[ $response != 'n' ]]; then brew bundle --global; fi
+
+# Install our config for Sublime Text 3.
+cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+
+# Install our favorite monospace font.
+cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
+
+# Install our 1-line .bash_profile
+cp bash/.bash_profile ~/.bash_profile
