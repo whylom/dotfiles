@@ -11,8 +11,7 @@ done
 ln -snf ~/.dotfiles/.js ~/.js
 
 # Configure OS X settings to be just the way we like it.
-read -p "Update OS X settings? (Y/n) " response
-if [[ $response != 'n' ]]; then osx/configure; fi
+osx/configure
 
 # Make sure Homebrew is installed
 if ! type brew &> /dev/null; then
@@ -20,11 +19,8 @@ if ! type brew &> /dev/null; then
 fi
 
 # Install Homebrew packages in Brewfile (if user desires it)
-read -p "Install Homebrew packages in Brewfile? (Y/n) " response
-if [[ $response != 'n' ]]; then
-  brew tap homebrew/bundle # make sure `brew bundle` is available
-  brew bundle --global
-fi
+brew tap homebrew/bundle # make sure `brew bundle` is available
+brew bundle --global
 
 # Install our config for Sublime Text 3.
 cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
