@@ -1,21 +1,23 @@
 # dotfiles
 
-A home for my humble dotfiles. This is not a fork, but it does happily steal ideas from [many other dotfile repos](http://dotfiles.github.com/). Please fork it, steal it, or revile it as your tastes dictate.
+A home for my humble dotfiles.
+
 
 ## Install
 
-1. `git clone git@github.com:whylom/dotfiles.git`
-2. `cd dotfiles`
-3. `./install.sh` (I'm sure you look at any and all [install scripts](install.sh) before running them, right?)
-4. `./osx/configure` (optionally run a script to configure OS X with my preferred defaults)
+```shell
+git clone git@github.com:whylom/dotfiles.git
+cd dotfiles
+script/setup
+```
 
-## Quick Tour
+## Highlights
 
-* Like [Zach Holman's dotfiles](https://github.com/holman/dotfiles), my dotfiles are organized into topic folders,
-* Any *.symlink files are symlinked into ~ during installation.
-* Any *.sh files are included by .bashrc.
-* Put anything you want to keep out of version control into `private.sh`. This file has already been `.gitignore`'d for you.
-* The `dotjs` folder is symlinked to `~/.js`. These files customize web pages using Chris Wanstrath's kickass [dotjs](https://github.com/defunkt/dotjs) Chrome extension.
-* Most of the customization firepower is in `git/functions.sh`.
-
-![screenshot](http://cl.ly/image/2C00460v413M/dotfiles-screenshot.png)
+* [Homebrew](http://brew.sh/) (with [`bundle`](https://github.com/Homebrew/homebrew-bundle), [`cask`](https://caskroom.github.io/), and [`services`](https://github.com/Homebrew/homebrew-services))
+* [chruby](https://github.com/postmodern/chruby)
+* [Sublime Text 3](https://www.sublimetext.com/)
+* [iTerm2](https://www.iterm2.com/)
+* [dotjs](https://github.com/defunkt/dotjs)
+* my preferred terminal prompt (ZOMG colors and Git and...)
+* my preferred [monospace font](http://dejavu-fonts.org/)
+* an embarrassment of aliases, functions, and completions
