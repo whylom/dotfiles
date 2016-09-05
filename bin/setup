@@ -28,4 +28,5 @@ cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
 cp bash/.bash_profile ~/.bash_profile
 
 # Configure OS X settings to be just the way we like it
+echo "A password is needed to configure OS X settings"
 osx/configure
