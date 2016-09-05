@@ -1,32 +1,31 @@
-# Create a symlink to all dotfiles whose name ends in ".symlink".
-# Eg: `~/.foo` will be symlinked to `~/.dotfiles/foo.symlink`
+# Symlink files ending in ".symlink" to home directory
+# eg: `~/.dotfiles/foo.symlink` will have the symlink `~/.foo`
 for original in ~/.dotfiles/*/**.symlink; do
   link=$(basename $original) # extract filename from path
   link=${link%.symlink}      # remove ".symlink"
-  link="$HOME/.$link"        # prepend with "~/."
-  ln -sf $original $link
+  ln -sf $original ~/.$link
 done
 
-# Explictly symlink certain folders.
+# Symlink folders
 ln -snf ~/.dotfiles/.js ~/.js
-
-# Configure OS X settings to be just the way we like it.
-osx/configure
 
 # Make sure Homebrew is installed
 if ! type brew &> /dev/null; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Install Homebrew packages in Brewfile (if user desires it)
-brew tap homebrew/bundle # make sure `brew bundle` is available
-brew bundle --global
+# Install Homebrew packages listed in Brewfile
+brew tap homebrew/bundle # first make sure `brew bundle` is available
+brew bundle
 
-# Install our config for Sublime Text 3.
+# Copy our Sublime Text preferences (must be run after `brew bundle`)
 cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
 
-# Install our favorite monospace font.
+# Install our favorite monospace font
 cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
 
 # Install our 1-line .bash_profile
 cp bash/.bash_profile ~/.bash_profile
+
+# Configure OS X settings to be just the way we like it
+osx/configure
