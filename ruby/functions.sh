@@ -1,3 +1,17 @@
+# start & stop Mailcatcher
+function mc() {
+  if   [ -z $1 ]; then
+    echo 'Try "mc start" or "mc stop" or "mc open"'
+  elif [ $1 = "start" ]; then
+    mailcatcher --browse
+  elif [ $1 = "stop" ]; then
+    lsof -i :1080 | grep ruby | awk '{ print $2 }' | xargs kill -9
+  elif [ $1 = "open" ]; then
+    open http://127.0.0.1:1080
+  fi
+}
+
+# select 1 or more specs to run with Spin
 function s?() {
   # concatenate arguments into a string delimited by .*
   query="$(echo $@ | sed 's/ /.*/g')"

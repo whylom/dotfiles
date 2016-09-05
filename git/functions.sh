@@ -148,3 +148,16 @@ function gus() {
   fi
   gs
 }
+
+function pull() {
+  # get URL of "origin" remote
+  remote=$(git remote -v | grep origin | head -1 | awk '{ print $2 }')
+
+  # extract org & repo from remote URL
+  [[ $remote =~ github.com:(.*)/(.*).git ]]
+  org=${BASH_REMATCH[1]}
+  repo=${BASH_REMATCH[2]}
+
+  # open pull request in default browser
+  open https://github.com/$org/$repo/pull/$1
+}

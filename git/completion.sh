@@ -36,4 +36,4 @@ complete -F __branches gpu
 
 complete -F __recent_shas gsho
 
-complete -F __git_completion git
+complete -f -F __git_completion git
