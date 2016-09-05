@@ -8,7 +8,7 @@ A home for my humble dotfiles.
 ```shell
 git clone git@github.com:whylom/dotfiles.git
 cd dotfiles
-script/setup
+bin/setup
 ```
 
 ## Highlights
@@ -18,6 +18,6 @@ script/setup
 * [Sublime Text 3](https://www.sublimetext.com/)
 * [iTerm2](https://www.iterm2.com/)
 * [dotjs](https://github.com/defunkt/dotjs)
-* my preferred terminal prompt (ZOMG colors and Git and...)
+* my preferred terminal prompt
 * my preferred [monospace font](http://dejavu-fonts.org/)
 * an embarrassment of aliases, functions, and completions
