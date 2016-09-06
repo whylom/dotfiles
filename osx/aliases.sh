@@ -1,3 +1,1 @@
-function fit() {
-  osascript ~/.dotfiles/osx/fit.applescript
-}
+alias fit="osascript ~/.dotfiles/osx/fit.applescript"
