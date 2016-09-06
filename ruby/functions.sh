@@ -1,3 +1,7 @@
+function db() {
+  mysql --user=root --password=password $(git_repository)_development
+}
+
 # start & stop Mailcatcher
 function mc() {
   if   [ -z $1 ]; then
@@ -11,7 +15,15 @@ function mc() {
   fi
 }
 
-# select 1 or more specs to run with Spin
+function s() {
+  # specify 1 or more specs to run with Spin
+  spin push $@
+
+  # copy specified files to clipboard
+  echo $@ | chomp | pbcopy
+}
+
+# select 1 or more specs to run with Spin (with fuzzyish matching!)
 function s?() {
   # concatenate arguments into a string delimited by .*
   query="$(echo $@ | sed 's/ /.*/g')"
