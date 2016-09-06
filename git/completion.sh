@@ -20,7 +20,7 @@ __git_completion() {
   elif [[ $cmd = "push" ]]; then
     list=$(git remote)
   elif [[ $cmd = "staging" ]] || [[ $cmd = "development" ]]; then
-    list=$(git branch -a | tr -d ' *' | grep -v HEAD | sed 's|remotes/origin/||' | grep -v remotes)
+    list=$(git branch -a | tr -d ' *' | grep -v HEAD | sed 's|remotes/origin/||' | grep -v remotes | uniq)
   fi
 
   COMPREPLY=($(compgen -W "${list}" -- ${COMP_WORDS[COMP_CWORD]}))

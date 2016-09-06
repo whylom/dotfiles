@@ -37,7 +37,7 @@ function ga() {
     if [[ $arg =~ ^[0-9]+$ ]]; then
       git add "$(git_nth_in_status $arg)"
     elif [[ $arg =~ ^[MD?]$ ]]; then
-      git status --porcelain | strp | grep "^$arg" | awk '{ print $2 }' | inline | xargs git add
+      git status --porcelain | strp | grep "^$arg" | awk '{ print $2 }' | xargs git add
     else
       git add $arg
     fi
@@ -91,8 +91,7 @@ function gpu() {
 }
 
 function gp!() {
-  branch=${1:-$(git_branch)}
-  run "git push --force-with-lease origin ${branch}"
+  run "git push --force-with-lease origin ${1:-$(git_branch)}"
 }
 
 function gprune() {

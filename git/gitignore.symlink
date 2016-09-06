@@ -1,6 +1,6 @@
 .DS_Store
 .powrc
+.ruby-gemset
 .sass-cache
 nohup.out
 Thumbs.db
-.ruby-gemset
