@@ -15,6 +15,18 @@ function git_nth_in_status() {
   git status --porcelain | strp | nthline $1 | awk '{ print $2 }'
 }
 
+function git_remote() {
+  git remote -v | grep origin | head -1 | awk '{ print $2 }'
+}
+
+function git_organization() {
+  [[ $(git_remote) =~ github.com:(.*)/(.*).git ]] && echo ${BASH_REMATCH[1]}
+}
+
+function git_repository() {
+  [[ $(git_remote) =~ github.com:(.*)/(.*).git ]] && echo ${BASH_REMATCH[2]}
+}
+
 # takes multiple arguments, any of which can be
 #   1-9 : nth file in git status listing
 #   M   : all modified files
@@ -150,14 +162,5 @@ function gus() {
 }
 
 function pull() {
-  # get URL of "origin" remote
-  remote=$(git remote -v | grep origin | head -1 | awk '{ print $2 }')
-
-  # extract org & repo from remote URL
-  [[ $remote =~ github.com:(.*)/(.*).git ]]
-  org=${BASH_REMATCH[1]}
-  repo=${BASH_REMATCH[2]}
-
-  # open pull request in default browser
-  open https://github.com/$org/$repo/pull/$1
+  open https://github.com/$(git_organization)/$(git_repository)/pull/$1
 }
