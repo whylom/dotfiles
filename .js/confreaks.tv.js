@@ -51,8 +51,7 @@ function getSpeaker() {
 
 function rewriteTitle() {
   getRunningTime(function(runningTime) {
-    var title = getTalk() + " - " + getSpeaker() + " (" + runningTime + ")";
-    $('title').html(title);
+    $('title').html(getTalk() + " - " + getSpeaker() + " (" + runningTime + ")");
   });
 }
 

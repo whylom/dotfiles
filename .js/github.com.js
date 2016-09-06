@@ -1,7 +1,3 @@
-function emptyFileContents(element) {
-  element.parents('.file').children('.data, .image, .render-wrapper').remove();
-}
-
 // Add GitHub's own "danger" style to the Close button associated with pull
 // request comments, so I don't stupidly click on it so often.
 $('button[name=comment_and_close]').addClass('danger');
@@ -12,7 +8,6 @@ $('button[name=comment_and_close]').addClass('danger');
 $(document).on('keydown', function(e) {
   if (e.keyCode == 89 && e.shiftKey) {
     var url = document.location.toString();
-
     var matches = url.match( /(blob|commit)\/([a-f0-9]+)/ );
     if (!matches) return;
 
@@ -23,23 +18,20 @@ $(document).on('keydown', function(e) {
 });
 
 
-
 // In the pull request Files Changed tab, hide the diffs (but show filenames)
 // for files we don't need to see: images and vendored assets.
 var hideable = [".png", ".jpg", ".svg", "lib/assets", "vendor/assets/javascripts"];
-var filenamesToHide = $('span.js-selectable-text').filter(function() {
+var filesToHide = $('span.js-selectable-text').filter(function() {
   for (var i = 0; i <= hideable.length; i++) {
     if ($(this).is(':contains("'+ hideable[i] + '")')) return true;
   };
   return false;
 });
-emptyFileContents(filenamesToHide);
-
+filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove();
 
 
 // Upgrade notifications indicator in page header
 (function() {
-
   // Screen-scrape GitHub notifications page to find # of unread notifications.
   function getUnreadCount(callback) {
     $.get('/notifications', function(response) {
@@ -52,6 +44,7 @@ emptyFileContents(filenamesToHide);
   function updateOnce() {
     var box = $('.notification-indicator');
     var dot = box.find('.mail-status');
+
     getUnreadCount(function(unread) {
       if (unread > 0) {
         box.addClass('contextually-unread');
@@ -69,10 +62,9 @@ emptyFileContents(filenamesToHide);
     setTimeout(updateRepeatedly, seconds(60));
   }
 
-  // Update just once (right away) by hovering over the indicator icon.
+  // Mousing over the indicator icon updates just once.
   $('.notification-indicator').mouseenter(updateOnce);
 
   // Fire it up!
   updateRepeatedly();
-
 })();

@@ -1,4 +1,3 @@
-
 var alert = $('td.description pre');
 
 alert.html(

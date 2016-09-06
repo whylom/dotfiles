@@ -63,11 +63,6 @@ $('table.ambox-content').find('b,a').css({
   'color': 'black'
 });
 
-$('table.ambox-content').find('b,a').css({
-  'font-weight': 'normal',
-  'color': 'black'
-});
-
 // table of contents
 var toc = $('.toc').css({
   'background-color': '#f6f6f6',
