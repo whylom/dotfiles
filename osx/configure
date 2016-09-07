@@ -169,3 +169,6 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Photos: Do not open automatically when a device is plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+# Show day of week, date, and time in menu bar
+defaults write com.apple.menuextra.clock "DateFormat" "EEE MMM d  h:mm a"
