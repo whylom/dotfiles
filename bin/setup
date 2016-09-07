@@ -19,7 +19,13 @@ brew tap homebrew/bundle # first make sure `brew bundle` is available
 brew bundle --file=homebrew/Brewfile
 
 # Copy our Sublime Text preferences (must be run after `brew bundle`)
-cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+# Whether preferences file is `~/Library` or `/Library` varies between machines
+# so we check for the destination folder before copying.
+prefs=~/.dotfiles/sublime/Preferences.sublime-settings
+global=/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+user=~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+if [ -d "$global" ]; then echo cp prefs global; fi
+if [ -d "$user" ]; then echo cp prefs user; fi
 
 # Install our favorite monospace font
 cp fonts/DejaVuSansMono.ttf ~/Library/Fonts/DejaVuSansMono.ttf
