@@ -1,5 +1,5 @@
 # Only proceed if an SSH public key needs to be created.
-if [[ ! -e ~/.ssh/id_rsa.pub ]];
+if [[ ! -e ~/.ssh/id_rsa.pub ]]; then
   echo "Let's generate an SSH keypair so you can access GitHub."
 
   read -p "Enter your email (used for the public key's comment)" comment
