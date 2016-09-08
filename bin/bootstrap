@@ -1,0 +1,31 @@
+# Make sure Homebrew is installed.
+if ! type brew &> /dev/null; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Make sure Git is installed.
+if [[ ! $(brew list | grep git) ]]; then
+  brew install git
+fi
+
+# Configure SSH access to GitHub
+if [[ -e ~/.ssh/id_rsa.pub ]]; then
+  echo "~/.ssh/id_rsa.pub already exists"
+else
+  echo "Let's generate an SSH keypair so you can access GitHub."
+  read -p "Enter your email (used for the public key's comment)" comment
+
+  # Generate a new SSH keypair.
+  ssh-keygen -t rsa -b 4096 -C $comment
+
+  # Add the private key to the ssh-agent.
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+
+  # Copy the public key to user's clipboard.
+  pbcopy < ~/.ssh/id_rsa.pub
+
+  # Open GitHub's "SSH and GPG keys" page in the default browser
+  # so the user can associate the public key with their account.
+  open https://github.com/settings/keys
+fi

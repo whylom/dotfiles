@@ -5,6 +5,14 @@ A home for my humble dotfiles.
 
 ## Install
 
+If you need to configure Git and GitHub access (ie: your machine is brand spanking new) you can run this one-time script:
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/whylom/dotfiles/master/bin/bootstrap | sh
+```
+
+Now you can install like this:
+
 ```shell
 git clone git@github.com:whylom/dotfiles.git
 cd dotfiles
