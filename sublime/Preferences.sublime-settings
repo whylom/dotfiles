@@ -1,11 +1,4 @@
 {
-  "word_wrap": false,
-
-  // "line_padding_top": 1,
-  // "line_padding_bottom": 1,
-  // "line_numbers": false,
-  // "word_wrap": true,
-
   "caret_style": "solid",
   "color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme",
   "font_face": "DejaVu Sans Mono",
@@ -16,5 +9,12 @@
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": true,
-  "wrap_width": 80
+  "word_wrap": false,
+  "wrap_width": 80,
+
+  // "line_padding_top": 1,
+  // "line_padding_bottom": 1,
+  // "line_numbers": false,
+  // "trim_trailing_white_space_on_save": false,
+  // "word_wrap": true,
 }
