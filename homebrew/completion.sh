@@ -1,6 +1,3 @@
-__homebrew_apps=$(brew list)
-__homebrew_casks=$(brew cask list)
-
 __homebrew() {
   local index cmd commands list
 
@@ -12,9 +9,9 @@ __homebrew() {
   elif [[ $cmd = "cask" ]]; then
     list="cleanup doctor home info install list search uninstall update zap"
   elif [ $index -eq 3 ]; then
-    list="$__homebrew_apps"
+    list=$(brew list)
   elif [ $index -eq 4 ]; then
-    list="$__homebrew_casks"
+    list=$(brew cask list)
   fi
 
   COMPREPLY=($(compgen -W "${list}" -- ${COMP_WORDS[COMP_CWORD]}))
