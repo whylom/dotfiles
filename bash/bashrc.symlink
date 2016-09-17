@@ -12,4 +12,4 @@ for f in ~/.dotfiles/**/*.sh; do source $f; done
 if [ -e ~/.dotfiles/private.sh ]; then source ~/.dotfiles/private.sh; fi
 
 # go to our favorite directory if we're in ~
-if [ $PWD = $HOME ]; then cd $FAVE; fi
+if [[ $PWD = $HOME && -d $FAVE ]]; then cd $FAVE; fi
