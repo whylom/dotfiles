@@ -30,9 +30,15 @@ var filesToHide = $('span.js-selectable-text').filter(function() {
 filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove();
 
 
-// Upgrade notifications indicator in page header
-(function() {
-  // Screen-scrape GitHub notifications page to find # of unread notifications.
+// Update favicon & page header based on # of unread notifications.
+$(document).ready(function() {
+  // Default favicon is loaded from assets-cdn.github.com. Replace it with an
+  // identical favicon from github.com to avoid cross-domain errors.
+  $('link[rel="icon"]').attr('href', 'https://github.com/favicon.ico');
+
+  // Initialize library used to badge favicon.
+  var favicon = new Favico({ animation:'none' });
+
   function getUnreadCount(callback) {
     $.get('/notifications', function(response) {
       var unread = $(response).find('.filter-item:first .count').text();
@@ -40,16 +46,17 @@ filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove()
     });
   }
 
-  // Update notifications indicator with the current state.
   function updateOnce() {
     var box = $('.notification-indicator');
     var dot = box.find('.mail-status');
 
     getUnreadCount(function(unread) {
       if (unread > 0) {
+        favicon.badge(unread.toString());
         box.addClass('contextually-unread');
         dot.addClass('unread');
       } else {
+        favicon.reset();
         box.removeClass('contextually-unread');
         dot.removeClass('unread');
       }
@@ -67,4 +74,4 @@ filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove()
 
   // Fire it up!
   updateRepeatedly();
-})();
+});
