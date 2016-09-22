@@ -5,4 +5,6 @@
 --type-add=css=.sass,.scss,.less
 --type-add=markdown=.md,.markdown
 --ignore-dir=bundle
+--ignore-dir=log
 --ignore-dir=logs
+--ignore-dir=tmp
