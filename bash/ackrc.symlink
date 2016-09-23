@@ -8,3 +8,4 @@
 --ignore-dir=log
 --ignore-dir=logs
 --ignore-dir=tmp
+--ignore-file=ext:csv
