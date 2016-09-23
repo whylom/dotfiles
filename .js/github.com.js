@@ -1,6 +1,7 @@
-// Add GitHub's own "danger" style to the Close button associated with pull
-// request comments, so I don't stupidly click on it so often.
-$('button[name=comment_and_close]').addClass('danger');
+// Add GitHub's own "danger" style to the "Close Pull Request" & "Close Issue"
+// buttons that I keep clicking on accidentally because they're right next to
+// the "Comment" button.
+$('button[name=comment_and_close]').addClass('btn-danger');
 
 
 // hitting the "Y" key in a file already expands the URL to use the commit SHA
