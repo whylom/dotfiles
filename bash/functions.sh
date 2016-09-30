@@ -16,3 +16,11 @@ function nthline() {
 function nthword() {
   cut -d ' ' -f $1
 }
+
+function sum() {
+  for i in $(cat); do
+    local sum=$(($sum + $i))
+  done
+
+  echo $sum
+}
