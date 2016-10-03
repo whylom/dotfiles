@@ -31,6 +31,20 @@ var filesToHide = $('span.js-selectable-text').filter(function() {
 filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove();
 
 
+// Make it easier to see links to pull requests in an issue's timeline.
+$(document).ready(function() {
+  var pr_header = $('[id*="ref-pullrequest"]');
+  var title = pr_header.siblings('h4');
+  var status = pr_header.siblings('span');
+
+  // Add some padding and a pleasant lavender background.
+  title.css({ background: '#e6e6fa', padding: '2px 8px' });
+
+  // Vertically center the status icon within the new background.
+  status.css({ marginTop: '3px' });
+});
+
+
 // Update favicon & page header based on # of unread notifications.
 $(document).ready(function() {
   // Default favicon is loaded from assets-cdn.github.com. Replace it with an
