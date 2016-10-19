@@ -54,6 +54,10 @@ $(document).ready(function() {
   // Initialize library used to badge favicon.
   var favicon = new Favico({ animation:'none' });
 
+  function onNotificationsPage() {
+    return document.location.pathname == "/notifications";
+  }
+
   function getUnreadCount(callback) {
     $.get('/notifications', function(response) {
       var unread = $(response).find('.filter-item:first .count').text();
@@ -67,11 +71,11 @@ $(document).ready(function() {
 
     getUnreadCount(function(unread) {
       if (unread > 0) {
-        favicon.badge(unread.toString());
+        if (onNotificationsPage()) favicon.badge(unread.toString());
         box.addClass('contextually-unread');
         dot.addClass('unread');
       } else {
-        favicon.reset();
+        if (onNotificationsPage()) favicon.reset();
         box.removeClass('contextually-unread');
         dot.removeClass('unread');
       }
@@ -81,7 +85,7 @@ $(document).ready(function() {
   // Update notifications indicator and schedule next update.
   function updateRepeatedly() {
     updateOnce();
-    setTimeout(updateRepeatedly, seconds(60));
+    setTimeout(updateRepeatedly, seconds(30));
   }
 
   // Mousing over the indicator icon updates just once.
