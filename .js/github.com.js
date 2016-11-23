@@ -33,15 +33,17 @@ filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove()
 
 // Make it easier to see links to pull requests in an issue's timeline.
 $(document).ready(function() {
-  var pr_header = $('[id*="ref-pullrequest"]');
-  var title = pr_header.siblings('h4');
-  var status = pr_header.siblings('span');
+  $('[id*="ref-pullrequest"]').each(function() {
+    var header = $(this);
 
-  // Add some padding and a pleasant lavender background.
-  title.css({ background: '#e6e6fa', padding: '2px 8px' });
+    // Put a dashed red border around the link to the pull request.
+    var pull = header.siblings('h4').add( header.children('h4') );
+    pull.css({ border: '1px dashed red', padding: '4px 8px' });
 
-  // Vertically center the status icon within the new background.
-  status.css({ marginTop: '3px' });
+    // Align the status icon within the new border.
+    var status = header.siblings('span');
+    status.css({ position: 'relative', top: '6px', marginRight: '5px' });
+  });
 });
 
 
