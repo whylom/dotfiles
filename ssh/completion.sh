@@ -3,4 +3,4 @@ __ssh_hosts() {
   COMPREPLY=($(compgen -W "${list}" -- ${COMP_WORDS[COMP_CWORD]}))
 }
 
-complete -f -F __ssh_hosts ssh
+complete -F __ssh_hosts ssh
