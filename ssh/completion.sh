@@ -4,3 +4,4 @@ __ssh_hosts() {
 }
 
 complete -F __ssh_hosts ssh
+complete -f -F __ssh_hosts scp
