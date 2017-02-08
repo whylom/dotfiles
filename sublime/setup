@@ -1,0 +1,7 @@
+# Install our Sublime Text preferences from a template.
+#
+# Sublime tends to randomly regenerate the settings file, overwriting the
+# formatting I use to switch quickly between coding & writing modes. I'm
+# extracting this setup step to a standalone file so I can easily reinstall
+# my version of the settings file.
+cp sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
