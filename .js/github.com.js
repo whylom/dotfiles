@@ -1,10 +1,10 @@
 // Lighten up the header with some custom CSS.
 var css ='\
-  .header-dark { background-color: #fafafa; }                                   \
-  .header-dark .header-nav-link { color: #555; }                                \
-  .header-logo-invertocat .octicon-mark-github { color: #000; }                 \
-  .header-dark .header-search-input { border: 1px solid #e5e5e5; color: #555; } \
-  .header-dark .header-search-input:focus { border-color: #bbb; }               \
+  .header { background-color: #fafafa; }                                   \
+  .header .header-nav-link { color: #555; }                                \
+  .header-logo-invertocat .octicon-mark-github { color: #000; }            \
+  .header .header-search-input { border: 1px solid #e5e5e5; color: #555; } \
+  .header .header-search-input:focus { border-color: #bbb; }               \
 ';
 
 var style = $('<style></style>').html(css);
