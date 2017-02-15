@@ -95,8 +95,10 @@ $(document).ready(function() {
 
   function getUnreadCount(callback) {
     $.get('/notifications', function(response) {
-      var unread = $(response).find('.filter-item:first .count').text();
-      callback(parseInt(unread));
+      var htmlPattern = /<span class="count">(\d+)<\/span>/;
+      var matches = htmlPattern.exec(response);
+      var unreadCount = parseInt(matches[1]);
+      callback(unreadCount);
     });
   }
 
