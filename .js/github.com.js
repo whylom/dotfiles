@@ -31,18 +31,25 @@ var filesToHide = $('span.js-selectable-text').filter(function() {
 filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove();
 
 
-// Make it easier to see links to pull requests in an issue's timeline.
+// Add links to all associated PRs right under the issue description.
 $(document).ready(function() {
-  $('[id*="ref-pullrequest"]').each(function() {
-    var header = $(this);
+  var issueDescription = $('.timeline-comment-wrapper:first');
 
-    // Put a dashed red border around the link to the pull request.
-    var pull = header.siblings('h4').add( header.children('h4') );
-    pull.css({ border: '1px dashed red', padding: '4px 8px' });
+  // Start by finding the existing PRs in the issue timeline
+  var pullRequests = $('[id*="ref-pullrequest"]').parent();
 
-    // Align the status icon within the new border.
-    var status = header.siblings('span');
-    status.css({ position: 'relative', top: '6px', marginRight: '5px' });
+  // Loop over the PRs in reverse order, so the end result is the right order.
+  $(pullRequests.get().reverse()).each(function() {
+    // Clone the PR, then harvest the clone's organs.
+    var pullRequest = $(this).clone();
+    var title = pullRequest.find('.discussion-item-ref-title');
+    var state = pullRequest.find('.state');
+
+    // Transplant the organs into a new host & insert after the description.
+    var container = $('<div class="discussion-item"></div>');
+    container.append(state);
+    container.append(title);
+    container.insertAfter(issueDescription);
   });
 });
 
