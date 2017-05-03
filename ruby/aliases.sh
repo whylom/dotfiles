@@ -1,6 +1,6 @@
 alias b="bundle exec"
 alias b?="bundle check"
-alias bi="run 'bundle install --path=vendor/bundle'"
+alias bi="bundle install"
 
 alias c="run 'bundle exec rails console'"
 alias cuke="bundle exec cucumber"
