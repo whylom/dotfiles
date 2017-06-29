@@ -1,18 +1,18 @@
 tap 'caskroom/cask'
 tap 'homebrew/services'
-tap 'homebrew/versions'
 
 brew 'ag'
-brew 'git'
 brew 'wget'
 
 brew 'chruby'
 brew 'ruby-install'
 
 cask '1password'
+cask 'atom'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'iterm2'
 cask 'keepingyouawake'
+cask 'slack'
 cask 'spotify'
 cask 'sublime-text'
