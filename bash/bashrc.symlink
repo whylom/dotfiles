@@ -6,10 +6,10 @@ source /usr/local/share/chruby/auto.sh
 export EDITOR="subl -w"
 
 # load .sh files
-for f in ~/.dotfiles/**/*.sh; do source $f; done
+for f in ~/dotfiles/**/*.sh; do source $f; done
 
 # load private.sh (ain't none of your bidness anyhow)
-if [ -e ~/.dotfiles/private.sh ]; then source ~/.dotfiles/private.sh; fi
+if [ -e ~/dotfiles/private.sh ]; then source ~/dotfiles/private.sh; fi
 
 # go to our favorite directory if we're in ~
 if [[ $PWD = $HOME && -d $FAVE ]]; then cd $FAVE; fi

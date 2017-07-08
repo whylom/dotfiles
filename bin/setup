@@ -1,13 +1,13 @@
 # Symlink files ending in ".symlink" to home directory
-# eg: `~/.dotfiles/foo.symlink` will have the symlink `~/.foo`
-for original in ~/.dotfiles/*/**.symlink; do
+# eg: `~/dotfiles/foo.symlink` will have the symlink `~/.foo`
+for original in ~/dotfiles/*/**.symlink; do
   link=$(basename $original) # extract filename from path
   link=${link%.symlink}      # remove ".symlink"
   ln -sf $original ~/.$link
 done
 
 # Symlink folders
-ln -snf ~/.dotfiles/.js ~/.js
+ln -snf ~/dotfiles/.js ~/.js
 
 # Make sure Homebrew is installed
 if ! type brew &> /dev/null; then
