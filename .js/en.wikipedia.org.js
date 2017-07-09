@@ -88,7 +88,7 @@ container.hover(function() {
   container.css('overflow-y', 'hidden');
 });
 
-$('<img src="http://upload.wikimedia.org/wikipedia/commons/8/84/W_logo_for_Mobile_Frontend.gif">')
+$('<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/W_logo_for_Mobile_Frontend.gif">')
 .css({
   'float': 'right',
   'margin-top': '4px'
