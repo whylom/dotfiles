@@ -6,9 +6,6 @@ for original in ~/dotfiles/*/**.symlink; do
   ln -sf $original ~/.$link
 done
 
-# Symlink folders
-ln -snf ~/dotfiles/.js ~/.js
-
 # Make sure Homebrew is installed
 if ! type brew &> /dev/null; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
