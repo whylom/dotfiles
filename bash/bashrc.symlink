@@ -4,6 +4,7 @@ source /usr/local/share/chruby/auto.sh
 
 # environment variables
 export EDITOR="subl -w"
+export PATH="/usr/local/opt/mongodb@3.2/bin:$PATH"
 
 # load .sh files
 for f in ~/dotfiles/**/*.sh; do source $f; done
