@@ -2,6 +2,7 @@ tap 'caskroom/cask'
 tap 'homebrew/services'
 
 brew 'ag'
+brew 'jq'
 brew 'wget'
 
 brew 'chruby'
