@@ -75,7 +75,6 @@ $(document).ready(function() {
         box.addClass('contextually-unread');
         dot.addClass('unread');
       } else {
-        if (onNotificationsPage()) favicon.reset();
         box.removeClass('contextually-unread');
         dot.removeClass('unread');
       }
