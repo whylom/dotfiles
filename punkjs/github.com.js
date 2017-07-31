@@ -54,19 +54,9 @@ $(document).ready(function() {
 });
 
 
-// Update favicon & page header based on # of unread notifications.
+// Keep the notification indicator in the header in sync with reality.
 $(document).ready(function() {
-  // Default favicon is loaded from assets-cdn.github.com. Replace it with an
-  // identical favicon from github.com to avoid cross-domain errors.
-  $('link[rel="icon"]').attr('href', 'https://github.com/favicon.ico');
-
-  // Initialize library used to badge favicon.
-  var favicon = new Favico({ animation:'none' });
-
-  function onNotificationsPage() {
-    return document.location.pathname == "/notifications";
-  }
-
+  // Screen-scrape the Notifications page to get the number of unread messages.
   function getUnreadCount(callback) {
     $.get('/notifications', function(response) {
       var htmlPattern = /<span class="count">(\d+)<\/span>/;
@@ -82,7 +72,6 @@ $(document).ready(function() {
 
     getUnreadCount(function(unread) {
       if (unread > 0) {
-        if (onNotificationsPage()) favicon.badge(unread.toString());
         box.addClass('contextually-unread');
         dot.addClass('unread');
       } else {
