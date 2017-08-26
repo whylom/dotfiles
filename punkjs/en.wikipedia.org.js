@@ -1,5 +1,26 @@
 document.title = document.title.replace('- Wikipedia, the free encyclopedia', '(Wikipedia)');
 
+// Hide all images on any page about a disease, because yuck.
+(function() {
+  function isDiseasePage() {
+    return $('.infobox th:contains("Specialty")').length > 0;
+  }
+
+  function eachImage(fn) {
+    $('a.image img').each(fn);
+  }
+
+  function replaceWithPlacholder() {
+    var img = this;
+    var dimensions = [img.width, img.height].join('x'); // eg: "300x280"
+    img.srcset = 'https://via.placeholder.com/' + dimensions;
+  }
+
+  if (isDiseasePage()) {
+    eachImage(replaceWithPlacholder);
+  }
+})()
+
 $('body').css("background", "none");
 
 $('#siteNotice, #siteSub, #mw-head-base, #mw-page-base, #mw-head, #mw-panel, #toctitle, .mw-editsection, .mbox-image, .magnify').remove();
