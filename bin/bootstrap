@@ -22,6 +22,9 @@ else
   eval "$(ssh-agent -s)"
   ssh-add -K ~/.ssh/id_rsa
 
+  # Configure SSH to load keys into ssh-agent & store passphrases in keychain.
+  printf "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_rsa\n" >> ~/.ssh/config
+
   # Copy the public key to user's clipboard.
   pbcopy < ~/.ssh/id_rsa.pub
 
