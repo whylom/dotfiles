@@ -3,9 +3,9 @@ alias b?="bundle check"
 alias bi="bundle install"
 
 alias c="run 'bundle exec rails console'"
-alias cuke="bundle exec cucumber"
 
 alias r="bundle exec rake"
+alias routes?="bundle exec rake routes | grep"
 
 alias r-="cat tmp/pids/server.pid | xargs kill -9"
 alias r!="run 'bundle exec rails server'"
