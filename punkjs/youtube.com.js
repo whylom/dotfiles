@@ -1,46 +1,24 @@
-function getRunningTime() {
-  // Get video's duration from meta tag data.
-  var duration = $('meta[itemprop="duration"]').attr('content');
-  var parts = duration.replace(/(PT|S)/g, '').split('M');
-  var min = parseInt(parts[0]);
-  var sec = parseInt(parts[1]);
+// Extract video's duration from a big honking horror of JS
+var wtf = $('#player script:last').html();
+var matches = wtf.match(/"length_seconds":"(\d+)"/)
+var duration = parseInt(matches[1]) - 1;
 
-  // Split 60+ minutes into hours and minutes.
-  if (min > 60) {
-    var hrs = Math.floor(min / 60);
-    min = (min - (hrs * 60)).toString();
-  }
+// Calculate hours, minutes, and seconds from total duration.
+var hours = Math.floor(duration / 3600);
+var minutes = Math.floor((duration - (hours * 3600)) / 60);
+var seconds = duration - (hours * 3600) - (minutes * 60);
 
-  // Format time as either hh:mm:ss or mm:ss
-  if (hrs && min < 10) min = '0' + min;
-  if (sec < 10) sec = '0' + sec;
-  var time = hrs ? [hrs, min, sec] : [min, sec];
+// Format running time as "1:02:03" / "2:03"
+if (hours && minutes < 10) minutes = "0" + minutes;
+if (seconds < 10) seconds = "0" + seconds;
+time = [hours, minutes, seconds].join(':').replace(/^0:/, '');
 
-  return time.join(":");
-}
-
+var repeats = 0;
 (function() {
-  // Hide comments, sidebar, and footer.
-  $('#watch-discussion').remove();
-  $('.comments-pagination').remove();
-  $('.watch-sidebar-section').remove();
-  $('#footer-container').remove();
+  // Replace "YouTube" in the page title with the running time.
+  document.title = document.title.replace('- YouTube', '(' + time + ')');
 
-  // Expand description, hide controls to toggle description.
-  $('.yt-horizontal-rule').remove();
-  $('#watch-description-toggle').remove();
-  $('.yt-uix-expander-collapsed').removeClass('yt-uix-expander-collapsed');
-  $('#watch-description-toggle').remove();
-
-  // remove sidebar & widen main content section to fill the space
-  $('#watch7-sidebar-contents').remove();
-  $('#watch7-content').css({
-    'width': '856px',
-    'paddingLeft': '105px',
-  });
-
-  document.title = document.title.replace('▶ ', '').replace('- YouTube', '(' + getRunningTime() + ')');
-
-  // Keep repeating all of the above to catch asynchronous changes to the page.
-  setTimeout(arguments.callee, 1000);
+  // Do this every 10ms, but only 10 times, to get out of the way of the code
+  // YouTube is running to mess with the title.
+  if (repeats++ < 10) setTimeout(arguments.callee, 100);
 })();
