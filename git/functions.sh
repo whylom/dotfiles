@@ -160,6 +160,6 @@ function gus() {
   gs
 }
 
-function pull() {
+function pr() {
   open https://github.com/$(git_organization)/$(git_repository)/pull/$1
 }
