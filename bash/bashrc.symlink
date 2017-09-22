@@ -14,3 +14,5 @@ if [ -e ~/dotfiles/private.sh ]; then source ~/dotfiles/private.sh; fi
 
 # go to our favorite directory if we're in ~
 if [[ $PWD = $HOME && -d $FAVE ]]; then cd $FAVE; fi
+
+export PATH="$HOME/.yarn/bin:$PATH"
