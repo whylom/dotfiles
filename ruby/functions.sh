@@ -1,3 +1,9 @@
+function cop() {
+  # 1st arg defaults to "." (the current directory)
+  # silence "unrecognized parameter" warning by redirecting stderr to /dev/null
+  rubocop ${1:-.} 2>/dev/null
+}
+
 function db() {
   mysql --user=root --password=password $(git_repository)_development
 }
