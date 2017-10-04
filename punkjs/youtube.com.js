@@ -25,7 +25,7 @@ function putDurationInTitle() {
 }
 
 
-function dimSidebar() {
+function dimSidebars() {
   var sidebars = $('#related, #playlist');
 
   var opacity = (n) => { sidebars.css('opacity', n) }
