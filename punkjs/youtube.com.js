@@ -24,25 +24,20 @@ function putDurationInTitle() {
   document.title = document.title.replace('- YouTube', time);
 }
 
-
-function dimSidebars() {
-  var sidebars = $('#related, #playlist');
-
-  var opacity = (n) => { sidebars.css('opacity', n) }
+function dimSidebar(selector) {
+  var sidebar = $(selector);
+  var opacity = (n) => { sidebar.css('opacity', n) }
   var dim     = ()  => { opacity(0.1) }
   var undim   = ()  => { opacity(1.0) }
 
-  sidebars.hover(undim, dim);
+  sidebar.hover(undim, dim);
   dim();
 }
-
 
 var repeats = 0;
 (function() {
   putDurationInTitle();
-  dimSidebars();
-
-  // Do this every 10ms, but only 10 times, to get out of the way of the code
-  // YouTube is running to mess with the title.
-  if (repeats++ < 10) setTimeout(arguments.callee, 100);
+  dimSidebar('#related');
+  dimSidebar('#playlist');
+  setTimeout(arguments.callee, 500);
 })();
