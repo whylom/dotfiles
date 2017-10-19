@@ -24,20 +24,7 @@ function putDurationInTitle() {
   document.title = document.title.replace('- YouTube', time);
 }
 
-function dimSidebar(selector) {
-  var sidebar = $(selector);
-  var opacity = (n) => { sidebar.css('opacity', n) }
-  var dim     = ()  => { opacity(0.1) }
-  var undim   = ()  => { opacity(1.0) }
-
-  sidebar.hover(undim, dim);
-  dim();
-}
-
-var repeats = 0;
 (function() {
   putDurationInTitle();
-  dimSidebar('#related');
-  dimSidebar('#playlist');
   setTimeout(arguments.callee, 500);
 })();
