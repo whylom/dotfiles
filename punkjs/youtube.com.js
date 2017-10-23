@@ -30,8 +30,12 @@ function author() {
   return matches[1];
 }
 
+function titleContainsAuthor() {
+  return document.title.indexOf(author()) > -1;
+}
+
 function putAuthorInTitle() {
-  if (document.title.indexOf(author()) == -1) {
+  if (!titleContainsAuthor()) {
     document.title = author() + ' - ' + document.title.replace('- YouTube - YouTube', '');
   }
 }
