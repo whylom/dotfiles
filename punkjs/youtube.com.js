@@ -24,7 +24,31 @@ function putDurationInTitle() {
   document.title = document.title.replace('- YouTube', time);
 }
 
+function author() {
+  var wtf = $('html').html();
+  var matches = wtf.match(/"shortBylineText":\{"runs":\[\{"text":"([^\"]*)"/)
+  return matches[1];
+}
+
+function putAuthorInTitle() {
+  if (document.title.indexOf(author()) == -1) {
+    document.title = author() + ' - ' + document.title.replace('- YouTube - YouTube', '');
+  }
+}
+
+function isVideo() {
+  return document.location.pathname == '/watch';
+}
+
+function isPlaylist() {
+  return document.location.pathname == '/playlist';
+}
+
 (function() {
-  putDurationInTitle();
+  if (isVideo()) {
+    putDurationInTitle();
+  } else if (isPlaylist()) {
+    putAuthorInTitle();
+  }
   setTimeout(arguments.callee, 500);
 })();
