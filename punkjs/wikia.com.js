@@ -2,7 +2,7 @@ function isSearchResultsPage() {
   return document.location.pathname == '/wiki/Special:Search';
 }
 
-function redirectToFirstCiv6Reesult() {
+function redirectToFirstCiv6Result() {
   var firstCiv6Result = $('.result h1 a:contains("Civ6"):first');
   document.location = firstCiv6Result.attr('href');
 }
@@ -25,11 +25,17 @@ subheader.click(() => {
   }
 })
 
+// This here code is what we in the biz call "self-documenting"
 if (isSearchResultsPage()) {
-  redirectToFirstCiv6Reesult();
+  redirectToFirstCiv6Result();
 }
 
 // Hide grotesque geek culture clickbait
-$('#WikiaRailWrapper').remove(); // sidebar
-$('footer').remove(); // footer
-$('#WikiaBar').remove(); // footer below the footer (jesus, Wikia...)
+(function() {
+  $('#WikiaRailWrapper').remove(); // sidebar
+  $('#WikiaNotifications').remove() // sidebar popup
+  $('footer').remove(); // footer
+  $('#WikiaBar').remove(); // footer below the footer (jesus, Wikia...)
+
+  setTimeout(arguments.callee, 500);
+})();
