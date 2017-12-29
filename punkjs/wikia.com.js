@@ -30,12 +30,13 @@ if (isSearchResultsPage()) {
   redirectToFirstCiv6Result();
 }
 
-// Hide grotesque geek culture clickbait
-(function() {
+function hideClickbait() {
+  if (isSearchResultsPage()) return;
+
   $('#WikiaRailWrapper').remove(); // sidebar
   $('#WikiaNotifications').remove() // sidebar popup
   $('footer').remove(); // footer
   $('#WikiaBar').remove(); // footer below the footer (jesus, Wikia...)
+}
 
-  setTimeout(arguments.callee, 500);
-})();
+setInterval(hideClickbait, 500);
