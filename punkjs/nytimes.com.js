@@ -6,6 +6,7 @@ if (!isFrontPage()) {
   $('#masthead, #ribbon, .newsletter-signup, .supplemental, .story-meta-footer-sharetools, .comments-button').remove()
   $('.navigation-edge').hide();
   $('main').css('borderTop', 'none');
+  $('.interactive-embedded').remove();
 }
 
 (function() {
