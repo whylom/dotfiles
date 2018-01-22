@@ -10,14 +10,14 @@ document.title = document.title.replace('- Wikipedia, the free encyclopedia', '(
     $('a.image img').each(fn);
   }
 
-  function replaceWithPlacholder() {
+  function replaceWithPlaceholder() {
     var img = this;
     var dimensions = [img.width, img.height].join('x'); // eg: "300x280"
     img.srcset = 'https://via.placeholder.com/' + dimensions;
   }
 
   if (isDiseasePage()) {
-    eachImage(replaceWithPlacholder);
+    eachImage(replaceWithPlaceholder);
   }
 })()
 
