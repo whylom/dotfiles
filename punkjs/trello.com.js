@@ -89,20 +89,20 @@ $('head').append(style);
 
 (function() {
   // display the # of cards in each list's header
-  $('.list').each(function() {
-    var header = $('.list-header', this);
-    var extras   = $('.list-header-extras', header);
-    var numCards = $('.list-card', this).length;
-    var cardCount = header.find('.card-count');
+  // $('.list').each(function() {
+  //   var header = $('.list-header', this);
+  //   var extras   = $('.list-header-extras', header);
+  //   var numCards = $('.list-card', this).length;
+  //   var cardCount = header.find('.card-count');
 
-    if (cardCount.length) {
-      cardCount.html(numCards + ' cards');
-    } else {
-      extras.before(
-        $('<span class="card-count">'+ numCards +' cards</span>')
-      );
-    }
-  })
+  //   if (cardCount.length) {
+  //     cardCount.html(numCards + ' cards');
+  //   } else {
+  //     extras.before(
+  //       $('<span class="card-count">'+ numCards +' cards</span>')
+  //     );
+  //   }
+  // })
 
   // always display the entire card description
   $('.is-hide-full').removeClass('is-hide-full');
