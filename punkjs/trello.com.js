@@ -107,6 +107,8 @@ $('head').append(style);
   // always display the entire card description
   $('.is-hide-full').removeClass('is-hide-full');
 
+  document.title = document.title.replace(' | Trello', '');
+
   $("h3:contains('Description') ~ a").remove();
   $("h3:contains('Description')").remove();
   $("h3:contains('Labels')").remove();
