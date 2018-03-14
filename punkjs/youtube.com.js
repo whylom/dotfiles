@@ -45,7 +45,8 @@ function isVideo() {
 }
 
 function isPlaylist() {
-  return document.location.pathname == '/playlist';
+  var url = document.location;
+  return url.pathname == '/playlist' && url.search.indexOf('list=WL') == -1;
 }
 
 (function() {
