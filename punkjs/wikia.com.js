@@ -30,6 +30,8 @@ if (isSearchResultsPage()) {
   redirectToFirstCiv6Result();
 }
 
+document.title = document.title.replace(' (Civ6) | Civilization Wiki | FANDOM powered by Wikia', '')
+
 function hideClickbait() {
   if (isSearchResultsPage()) return;
 
@@ -39,4 +41,4 @@ function hideClickbait() {
   $('#WikiaBar').remove(); // footer below the footer (jesus, Wikia...)
 }
 
-setInterval(hideClickbait, 500);
+setInterval(hideClickbait, 100);
