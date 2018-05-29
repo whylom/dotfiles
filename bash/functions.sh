@@ -1,7 +1,12 @@
+# Tell 'em what yer gonna do, then do it
 function run() {
-  echo -e "\033[36m$1\033[0m" # warn user what we're about to do
-  sleep 1.5                   # give them some time to Ctrl-C
-  eval $1                     # FIRE!
+  print "$1"
+  eval $1
+}
+
+# Output given text in a pleasing shade of cyan
+function print() {
+  echo -e "\033[36m$1\033[0m"
 }
 
 function last_dir_in_path() {
