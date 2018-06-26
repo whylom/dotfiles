@@ -30,6 +30,7 @@ complete -F __branches gbd
 complete -F __branches gco
 complete -F __branches gcob
 complete -F __branches gd
+complete -F __branches gdno
 complete -F __branches gm
 complete -F __branches gp
 complete -F __branches gpu
