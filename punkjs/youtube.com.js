@@ -52,8 +52,9 @@ function isPlaylist() {
 (function() {
   if (isVideo()) {
     putDurationInTitle();
+    putAuthorInTitle();
   } else if (isPlaylist()) {
     putAuthorInTitle();
   }
-  setTimeout(arguments.callee, 500);
+  setTimeout(arguments.callee, 250);
 })();
