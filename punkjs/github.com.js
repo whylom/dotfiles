@@ -1,9 +1,3 @@
-// Add GitHub's own "danger" style to the "Close Pull Request" & "Close Issue"
-// buttons that I keep clicking on accidentally because they're right next to
-// the "Comment" button.
-$('button[name=comment_and_close]').addClass('btn-danger');
-
-
 // hitting the "Y" key in a file already expands the URL to use the commit SHA
 // let's make Shift-Y shorten the SHA to the first 7 chars
 $(document).on('keydown', function(e) {
@@ -18,41 +12,15 @@ $(document).on('keydown', function(e) {
   }
 });
 
+(function() {
+  // Add GitHub's own "danger" style to the "Close Pull Request" & "Close Issue"
+  // buttons that I keep clicking on accidentally because they're right next to
+  // the "Comment" button.
+  $('button[name=comment_and_close]').addClass('btn-danger');
 
-// In the pull request Files Changed tab, hide the diffs (but show filenames)
-// for files we don't need to see: images and vendored assets.
-var hideable = [".png", ".jpg", ".svg", "lib/assets", "vendor/assets/javascripts"];
-var filesToHide = $('span.js-selectable-text').filter(function() {
-  for (var i = 0; i <= hideable.length; i++) {
-    if ($(this).is(':contains("'+ hideable[i] + '")')) return true;
-  };
-  return false;
-});
-filesToHide.parents('.file').children('.data, .image, .render-wrapper').remove();
-
-
-// Add links to all associated PRs right under the issue description.
-$(document).ready(function() {
-  var issueDescription = $('.timeline-comment-wrapper:first');
-
-  // Start by finding the existing PRs in the issue timeline
-  var pullRequests = $('[id*="ref-pullrequest"]').parent();
-
-  // Loop over the PRs in reverse order, so the end result is the right order.
-  $(pullRequests.get().reverse()).each(function() {
-    // Clone the PR, then harvest the clone's organs.
-    var pullRequest = $(this).clone();
-    var title = pullRequest.find('.discussion-item-ref-title');
-    var state = pullRequest.find('.state');
-
-    // Transplant the organs into a new host & insert after the description.
-    var container = $('<div class="discussion-item"></div>');
-    container.append(state);
-    container.append(title);
-    container.insertAfter(issueDescription);
-  });
-});
-
+  // The above elements are not in the page on load, so keep polling
+  setTimeout(arguments.callee, 100);
+})();
 
 // Keep the notification indicator in the header in sync with reality.
 $(document).ready(function() {
