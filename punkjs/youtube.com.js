@@ -25,9 +25,11 @@ function putDurationInTitle() {
 }
 
 function author() {
-  var wtf = $('html').html();
-  var matches = wtf.match(/"shortBylineText":\{"runs":\[\{"text":"([^\"]*)"/)
-  return matches[1];
+  if (isVideo()) {
+    return $('#owner-container a').html();
+  } else {
+    return $('#owner-name a').html();
+  }
 }
 
 function titleContainsAuthor() {
@@ -56,5 +58,5 @@ function isPlaylist() {
   } else if (isPlaylist()) {
     putAuthorInTitle();
   }
-  setTimeout(arguments.callee, 250);
+  setTimeout(arguments.callee, 500);
 })();
