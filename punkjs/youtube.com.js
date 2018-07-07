@@ -38,7 +38,7 @@ function titleContainsAuthor() {
 
 function putAuthorInTitle() {
   if (!titleContainsAuthor()) {
-    document.title = author() + ' - ' + document.title.replace('- YouTube - YouTube', '');
+    document.title = author() + ' - ' + document.title.replace('- YouTube', '');
   }
 }
 
