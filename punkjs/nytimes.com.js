@@ -16,6 +16,6 @@ if (!isFrontPage() && !isSectionPage()) {
 $(':contains("Allow ads")').parents('button').parent().remove();
 
 (function() {
-  $('.ribbon-page-navigation, nav[data-testid="ribbon"]').remove();
+  $('.ribbon-page-navigation, nav[data-testid="ribbon"], aside').remove();
   setTimeout(arguments.callee, 100);
 })();
