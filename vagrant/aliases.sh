@@ -1,8 +1,6 @@
 alias v="vagrant"
-
 alias v-="run 'vagrant halt'"
-alias v--="run 'vagrant destroy'"
-
+alias v~="v- && v+"
 alias v?="vagrant status"
 
 alias vs="ssh vagrant"
