@@ -4,10 +4,6 @@ function cop() {
   rubocop ${1:-.} 2>/dev/null
 }
 
-function db() {
-  mysql --user=root --password=password $(git_repository)_development
-}
-
 # start & stop Mailcatcher
 function mc() {
   if   [ -z $1 ]; then

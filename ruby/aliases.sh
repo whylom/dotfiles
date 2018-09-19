@@ -4,6 +4,8 @@ alias bi="bundle install"
 
 alias c="run 'bundle exec rails console'"
 
+alias db="run 'bundle exec rails dbconsole'"
+
 alias r="bundle exec rake"
 alias routes?="bundle exec rake routes | grep"
 
