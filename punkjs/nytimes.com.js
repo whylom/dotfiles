@@ -13,9 +13,8 @@ if (!isFrontPage() && !isSectionPage()) {
   $('.interactive-embedded').remove();
 }
 
-$(':contains("Allow ads")').parents('button').parent().remove();
-
 (function() {
   $('.ribbon-page-navigation, nav[data-testid="ribbon"], aside').remove();
+  $(':contains("Allow ads")').parents('button').parent().remove();
   setTimeout(arguments.callee, 100);
 })();
