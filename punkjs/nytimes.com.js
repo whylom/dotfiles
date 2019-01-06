@@ -13,8 +13,13 @@ if (!isFrontPage() && !isSectionPage()) {
   $('.interactive-embedded').remove();
 }
 
+for (var i = 0; i < 10; i++) {
+  $('#story-ad-'+ i +'-wrapper').remove();
+}
+
 (function() {
   $('.ribbon-page-navigation, nav[data-testid="ribbon"], aside').remove();
   $(':contains("Allow ads")').parents('button').parent().remove();
+
   setTimeout(arguments.callee, 100);
 })();
