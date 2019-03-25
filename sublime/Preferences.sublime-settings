@@ -6,6 +6,8 @@
   "highlight_line": true,
   "ignored_packages": ["Vintage"],
   "indent_guide_options": [],
+  "mini_diff": false,
+  "show_git_status": false,
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": true,
