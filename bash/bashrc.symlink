@@ -2,6 +2,10 @@
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
+# direnv
+eval "$(direnv hook bash)"
+export DIRENV_LOG_FORMAT= # ssssssh! (direnv#203)
+
 # environment variables
 export EDITOR="subl -w"
 
