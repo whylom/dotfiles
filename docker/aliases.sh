@@ -8,13 +8,13 @@ alias dc~="docker-compose restart"
 
 alias dc++="docker-compose up -d"
 alias dc--="docker-compose down"
+alias dc~~="dc-- && dc++"
 
-alias dcx="docker-compose exec app"
-alias dbash="docker-compose exec app bash"
+alias dcx="docker-compose exec"
 alias dlog="docker-compose logs -f"
 alias dprune="docker container prune -f && docker volume prune -f"
 
 alias ds="docker-sync"
 alias ds+="docker-sync start"
 alias ds-="docker-sync stop"
-alias ds~="docker-sync stop > /dev/null && docker-sync start > /dev/null"
+alias ds~="docker-sync stop && docker-sync start"

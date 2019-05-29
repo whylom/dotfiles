@@ -77,6 +77,10 @@ function gd() {
   fi
 }
 
+function ge() {
+  subl $(git_nth_in_status $1)
+}
+
 function gmerged() {
   gl $1..master --ancestry-path --merges | tail -1
   echo ''

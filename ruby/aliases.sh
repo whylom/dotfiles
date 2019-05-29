@@ -2,7 +2,7 @@ alias b="bundle exec"
 alias b?="bundle check"
 alias bi="bundle install"
 
-alias c="docker-compose run app rails console"
+alias c="docker-compose exec app rails console"
 
 alias db="run 'bundle exec rails dbconsole'"
 
