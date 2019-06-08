@@ -18,7 +18,7 @@ for (var i = 0; i < 10; i++) {
 }
 
 (function() {
-  $('.ribbon-page-navigation, nav[data-testid="ribbon"], aside').remove();
+  $('.ribbon-page-navigation, nav[data-testid="ribbon"], aside, .expanded-dock').remove();
   $(':contains("Allow ads")').parents('button').parent().remove();
 
   setTimeout(arguments.callee, 100);
