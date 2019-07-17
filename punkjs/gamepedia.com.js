@@ -7,6 +7,6 @@ $('table.msgbox').css({
 });
 
 (function() {
-  $('#-pxqciy, #-pngsyo, #-pfvqrenvy_zvarpensg_tnzrcrqvn, #-ppiuaq').remove();
+  $('#-pxqciy, #-pngsyo, #-pfvqrenvy_zvarpensg_tnzrcrqvn, #-ppiuaq, #siderail_minecraft_gamepedia').remove();
   setTimeout(arguments.callee, 500);
 })();
