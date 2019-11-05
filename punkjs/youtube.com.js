@@ -21,8 +21,13 @@ function format(duration) {
 }
 
 function putDurationInTitle() {
-  var time = '(' + format(duration()) + ')';
-  document.title = document.title.replace('- YouTube', time);
+  if (!isVideo()) return;
+  var time = ' (' + format(duration()) + ')';
+  document.title = document.title.replace(' - YouTube', time);
+}
+
+function removeYouTube() {
+  document.title = document.title.replace(' - YouTube', '');
 }
 
 function author() {
@@ -58,8 +63,8 @@ function removeEmoji() {
 }
 
 (function() {
-  if (isVideo()) putDurationInTitle();
-
+  putDurationInTitle();
+  removeYouTube();
   putAuthorInTitle();
   removeUnreadCount();
   removeEmoji();
