@@ -11,7 +11,6 @@ alias dc--="docker-compose down"
 alias dc~~="dc-- && dc++"
 
 alias dcx="docker-compose exec"
-alias dlog="docker-compose logs -f"
 alias dprune="docker container prune -f && docker volume prune -f"
 
 alias ds="docker-sync"
