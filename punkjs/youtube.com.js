@@ -39,9 +39,13 @@ function titleStartsWithAuthor() {
 }
 
 function putAuthorInTitle() {
-  if (!titleStartsWithAuthor()) {
+  if (isVideoOrPlaylist() && !titleStartsWithAuthor()) {
     document.title = author() + ' - ' + document.title;
   }
+}
+
+function isVideoOrPlaylist() {
+  return isVideo() || isPlaylist();
 }
 
 function isVideo() {
