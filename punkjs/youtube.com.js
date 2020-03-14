@@ -39,7 +39,7 @@ function titleStartsWithAuthor() {
 }
 
 function putAuthorInTitle() {
-  if (isVideoOrPlaylist() && !titleStartsWithAuthor()) {
+  if (isVideoOrPlaylist() && !titleStartsWithAuthor() && !isWatchLater()) {
     document.title = author() + ' - ' + document.title;
   }
 }
@@ -54,7 +54,15 @@ function isVideo() {
 
 function isPlaylist() {
   var url = document.location;
-  return url.pathname == '/playlist' && url.search.indexOf('list=WL') == -1;
+  return url.pathname == '/playlist' && !url.search.includes('list=WL');
+}
+
+function isWatchLater() {
+  return document.title.indexOf('Watch later') > 0;
+}
+
+function isSubscriptions() {
+  return document.location.pathname == '/feed/subscriptions';
 }
 
 function removeUnreadCount() {
@@ -66,12 +74,36 @@ function removeEmoji() {
   document.title = document.title.replace(emoji, '');
 }
 
+function isWhitelisted(channel) {
+  var whitelist = '';
+  return whitelist.includes(channel);
+}
+
+function haveWatched(thumbnail) {
+  return thumbnail.find(':contains("WATCHED")').length > 0;
+}
+
+function dimThumbnails() {
+  if (!isSubscriptions()) return;
+
+  $('#items #dismissable').each(function() {
+    var thumbnail = $(this);
+    var channel = $('.ytd-channel-name a', thumbnail).html();
+    if (!isWhitelisted(channel)) {
+      thumbnail.css('filter', 'grayscale(1)').css('opacity', 0.05);
+    } else if (haveWatched(thumbnail)) {
+      thumbnail.css('filter', 'grayscale(1)').css('opacity', 0.5);
+    }
+  });
+}
+
 (function() {
   putDurationInTitle();
   removeYouTube();
   putAuthorInTitle();
   removeUnreadCount();
   removeEmoji();
+  dimThumbnails();
 
   setTimeout(arguments.callee, 500);
 })();
