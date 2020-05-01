@@ -1,16 +1,15 @@
-# Make binstubs easily available
-export PATH=./bin:$PATH
+# Add stuffs to PATH to make local development easier
+export PATH="./bin:/usr/local/opt/mysql@5.6/bin:$PATH"
 
-# chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+# Let various tools (like Git) know that Sublime Text is my editor
+export EDITOR="subl -w"
+
+# rbenv
+eval "$(rbenv init -)"
 
 # direnv
 eval "$(direnv hook bash)"
 export DIRENV_LOG_FORMAT= # ssssssh! (direnv#203)
-
-# environment variables
-export EDITOR="subl -w"
 
 # load .sh files
 for f in ~/dotfiles/**/*.sh; do source $f; done
