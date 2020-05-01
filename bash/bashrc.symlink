@@ -1,3 +1,7 @@
+# Silence "The default interactive shell is now zsh" warning
+# https://support.apple.com/en-us/HT208050
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Add stuffs to PATH to make local development easier
 export PATH="./bin:/usr/local/opt/mysql@5.6/bin:$PATH"
 
