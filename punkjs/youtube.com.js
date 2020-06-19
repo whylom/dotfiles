@@ -74,11 +74,6 @@ function removeEmoji() {
   document.title = document.title.replace(emoji, '');
 }
 
-function isWhitelisted(channel) {
-  var whitelist = '';
-  return whitelist.includes(channel);
-}
-
 function haveWatched(thumbnail) {
   return thumbnail.find(':contains("WATCHED")').length > 0;
 }
@@ -89,9 +84,7 @@ function dimThumbnails() {
   $('#items #dismissable').each(function() {
     var thumbnail = $(this);
     var channel = $('.ytd-channel-name a', thumbnail).html();
-    if (!isWhitelisted(channel)) {
-      thumbnail.css('filter', 'grayscale(1)').css('opacity', 0.05);
-    } else if (haveWatched(thumbnail)) {
+    if (haveWatched(thumbnail)) {
       thumbnail.css('filter', 'grayscale(1)').css('opacity', 0.5);
     }
   });
