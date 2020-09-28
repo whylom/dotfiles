@@ -10,7 +10,8 @@ function redirectToFirstCiv6Result() {
 // Dramatis personae
 var header = $('.wds-global-navigation-wrapper');
 var subheader = $('header:first');
-var search = $('#searchInput');
+var searchToggleButton = $('.wds-global-navigation__search-toggle');
+var searchField = $('input[type=search]');
 
 // Hide the ugly "FANDOM" header by default
 header.hide();
@@ -19,9 +20,11 @@ header.hide();
 subheader.click(() => {
   if (header.is(':visible')) {
     header.hide();
+    searchField.val('');
   } else {
     header.show();
-    search.focus();
+    searchToggleButton.click(); // simulate click to reveal search input
+    searchField.focus();
   }
 })
 
@@ -30,11 +33,13 @@ if (isSearchResultsPage()) {
   redirectToFirstCiv6Result();
 }
 
-document.title = document.title.replace(' (Civ6) | Civilization Wiki | FANDOM powered by Wikia', '')
+document.title = document.title.replace(' (Civ6) | Civilization Wiki | Fandom', '');
 
 function hideClickbait() {
   if (isSearchResultsPage()) return;
 
+  $('#WikiaTopAds').remove(); // header ad
+  $('[itemprop="video"]').remove();  // video
   $('#WikiaRailWrapper').remove(); // sidebar
   $('#WikiaNotifications').remove() // sidebar popup
   $('footer').remove(); // footer
