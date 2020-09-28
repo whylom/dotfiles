@@ -79,15 +79,16 @@ function haveWatched(thumbnail) {
 }
 
 function dimThumbnails() {
-  if (!isSubscriptions()) return;
-
-  $('#items #dismissable').each(function() {
+  $('a#thumbnail').each(function() {
     var thumbnail = $(this);
-    var channel = $('.ytd-channel-name a', thumbnail).html();
     if (haveWatched(thumbnail)) {
-      thumbnail.css('filter', 'grayscale(1)').css('opacity', 0.5);
+      dimElement(thumbnail);
     }
   });
+}
+
+function dimElement(element) {
+  element.css('filter', 'grayscale(1)').css('opacity', 0.5);
 }
 
 (function() {
