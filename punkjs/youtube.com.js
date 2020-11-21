@@ -75,7 +75,7 @@ function removeEmoji() {
 }
 
 function haveWatched(thumbnail) {
-  return thumbnail.find(':contains("WATCHED")').length > 0;
+  return thumbnail.has('#overlays #progress[style*="100%"]').length;
 }
 
 function dimThumbnails() {
