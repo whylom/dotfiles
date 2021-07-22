@@ -19,8 +19,9 @@ for (var i = 0; i < 10; i++) {
 }
 
 (function() {
-  $('.ribbon-page-navigation, nav[data-testid="ribbon"], aside, .expanded-dock').remove();
+  $('.ribbon-page-navigation, nav[data-testid="ribbon"], aside, .expanded-dock, [data-testid="inline-message"]').remove();
   $(':contains("Allow ads")').parents('button').parent().remove();
+  $('p:contains("Advertisement")').parent().parent().remove();
 
-  setTimeout(arguments.callee, 100);
+  setTimeout(arguments.callee, 2000);
 })();
