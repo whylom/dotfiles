@@ -81,14 +81,18 @@ function haveWatched(thumbnail) {
 function dimThumbnails() {
   $('a#thumbnail').each(function() {
     var thumbnail = $(this);
+
     if (haveWatched(thumbnail)) {
+      var metadata = thumbnail.parents('#dismissable:first').find('#meta');
+
       dimElement(thumbnail);
+      dimElement(metadata);
     }
   });
 }
 
 function dimElement(element) {
-  element.css('filter', 'grayscale(1)').css('opacity', 0.5);
+  element.css('filter', 'grayscale(1)').css('opacity', 0.3);
 }
 
 (function() {

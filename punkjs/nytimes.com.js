@@ -11,6 +11,7 @@ if (!isFrontPage() && !isSectionPage()) {
   $('.navigation-edge').hide();
   $('main').css('borderTop', 'none');
   $('.interactive-embedded').remove();
+  $('[data-test-id="RecommendedNewsletter"]').remove();
 }
 
 for (var i = 0; i < 10; i++) {
