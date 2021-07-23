@@ -3,7 +3,7 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Add stuffs to PATH to make local development easier
-export PATH="./bin:/usr/local/opt/mysql@5.6/bin:$PATH"
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
 
 # Let various tools (like Git) know that Sublime Text is my editor
 export EDITOR="subl -w"
