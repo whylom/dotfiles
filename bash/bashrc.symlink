@@ -3,17 +3,10 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Add stuffs to PATH to make local development easier
-export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+# export PATH="/things/stuff:$PATH"
 
 # Let various tools (like Git) know that Sublime Text is my editor
 export EDITOR="subl -w"
-
-# rbenv
-eval "$(rbenv init -)"
-
-# direnv
-eval "$(direnv hook bash)"
-export DIRENV_LOG_FORMAT= # ssssssh! (direnv#203)
 
 # load .sh files
 for f in ~/dotfiles/**/*.sh; do source $f; done

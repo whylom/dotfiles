@@ -12,7 +12,6 @@ if ! type brew &> /dev/null; then
 fi
 
 # Install Homebrew packages listed in Brewfile
-brew tap homebrew/bundle # first make sure `brew bundle` is available
 brew bundle --file=homebrew/Brewfile
 
 # Copy our Sublime Text preferences (must be run after `brew bundle`)

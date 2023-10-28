@@ -1,6 +1,3 @@
-tap 'homebrew/cask-cask'
-tap 'homebrew/services'
-
 brew 'ag'
 brew 'jq'
 brew 'wget'
